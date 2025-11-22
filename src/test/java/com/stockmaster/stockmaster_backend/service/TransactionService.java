@@ -1,38 +1,49 @@
 package com.stockmaster.stockmaster_backend.service;
 
-import com.stockmaster.stockmaster_backend.entity.Product;
-import com.stockmaster.stockmaster_backend.repository.ProductRepository;
+import com.stockmaster.stockmaster_backend.entity.Transaction;
+import com.stockmaster.stockmaster_backend.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
 public class TransactionService {
 
-    private final ProductRepository repo;
+    private final TransactionRepository repository;
 
-    public TransactionService(ProductRepository repo) {
-        this.repo = repo;
+    public TransactionService(TransactionRepository repository) {
+        this.repository = repository;
     }
 
-    public List<Product> getAll() {
-        return repo.findAll();
+    public List<Transaction> findAll() {
+        return repository.findAll();
     }
 
-    public Product add(Product product) {
-        return repo.save(product);
+    public Transaction findById(Long id) {
+        return repository.findById(id).orElse(null);
     }
 
-    public Product update(Long id, Product newProduct) {
-        Product old = repo.findById(id).orElseThrow();
-        old.setName(newProduct.getName());
-        old.setCategory(newProduct.getCategory());
-        old.setUnit(newProduct.getUnit());
-        old.setCurrentStock(newProduct.getCurrentStock());
-        old.setMinimumStock(newProduct.getMinimumStock());
-        return repo.save(old);
+    public Transaction create(Transaction transaction) {
+        return repository.save(transaction);
+    }
+
+    public Transaction update(Long id, Transaction transaction) {
+        Transaction existing = repository.findById(id).orElse(null);
+        if (existing == null) {
+            return null;
+        }
+
+        // ⚠️ Adjust these setters if your Transaction entity has different field names
+        existing.setProduct(transaction.getProduct());
+        existing.setQuantity(transaction.getQuantity());
+        existing.setType(transaction.getType());
+        existing.setDate(transaction.getDate());
+        existing.setSupplier(transaction.getSupplier());
+
+        return repository.save(existing);
     }
 
     public void delete(Long id) {
-        repo.deleteById(id);
+        repository.deleteById(id);
     }
 }
