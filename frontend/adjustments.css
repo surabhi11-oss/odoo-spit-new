@@ -1,0 +1,48 @@
+.page-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.filter-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 6px;
+}
+
+.dot.yellow { background: #eab308; }
+.dot.green { background: #22c55e; }
+.dot.red    { background: #ef4444; }
+
+.pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    color: white;
+    font-size: 12px;
+}
+
+.pill.red    { background: #ef4444; }
+.pill.green  { background: #22c55e; }
+.pill.yellow { background: #eab308; }
+
+.btn-primary.small {
+    padding: 8px 12px;
+}
+
+.text-right { text-align: right; }
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Deliveries — StockMaster (Clean)</title>
+  <link rel="stylesheet" href="hero.css">
+  <link rel="stylesheet" href="deliveries.css">
+</head>
+<body>
+  <div class="layout">
+    <div class="sidebar">
+      <div class="logo-box">
+        <div class="logo">SM</div>
+        <div>
+          <h2>StockMaster</h2>
+          <small class="subtitle">Inventory Dashboard</small>
+        </div>
+      </div>
+      <div class="nav">
+        <a class="nav-item" href="hero.html">Dashboard</a>
+        <a class="nav-item" href="products.html">Products</a>
+        <a class="nav-item" href="receipts.html">Receipts</a>
+        <a class="nav-item active" href="deliveries.html">Deliveries</a>
+        <a class="nav-item" href="transfers.html">Transfers</a>
+        <a class="nav-item" href="adjustments.html">Adjustments</a>
+        <a class="nav-item" href="move-history.html">Move History</a>
+        <a class="nav-item" href="settings.html">Settings</a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="top-bar">
+        <div>
+          <input type="text" placeholder="Search Deliveries, Customer, Doc..." aria-label="Search deliveries">
+          <select aria-label="Select warehouse"><option>All Warehouses</option></select>
+        </div>
+        <div class="user-box"><div class="user-info"><b>User</b><br><small>Inventory Manager</small></div><div class="user-icon">U</div></div>
+      </div>
+
+      <div class="panel">
+        <div class="flex-between"><h2>Deliveries</h2><div class="flex-gap"><a class="btn" href="hero.html">Back to Dashboard</a><button class="btn">+ New Delivery</button></div></div>
+      </div>
+
+      <div class="cards mt-16"><div class="card"><div class="card-title">Pending Deliveries</div><div class="card-value">3</div></div><div class="card"><div class="card-title">Completed</div><div class="card-value">12</div></div><div class="card"><div class="card-title">Cancelled</div><div class="card-value">1</div></div></div>
+
+      <div class="panel mt-18">
+        <h3>Filter Deliveries</h3>
+        <div class="flex-wrap-gap">
+          <select aria-label="Filter by status"><option>Status — All</option><option>Draft</option><option>Waiting</option><option>Ready</option><option>Done</option><option>Cancelled</option></select>
+          <select aria-label="Filter by customer"><option>All Customers</option></select>
+          <input type="date" aria-label="Start date">
+          <input type="date" aria-label="End date">
+          <input type="text" placeholder="Search delivery..." aria-label="Search delivery">
+          <button class="btn">Filter</button>
+        </div>
+      </div>
+
+      <div class="panel mt-18">
+        <h3>All Deliveries</h3>
+        <div class="table-wrapper">
+          <table class="deliveries-table">
+            <thead>
+              <tr><th>Delivery No</th><th>Customer</th><th>Items</th><th>Status</th><th>Date</th><th class="text-right">Action</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>D1023</td><td>Acme Ltd</td><td>24</td><td>Ready</td><td>Nov 20, 2025</td><td class="text-right"><button class="btn">View</button></td></tr>
+              <tr><td>D1021</td><td>Bharat Traders</td><td>12</td><td>Completed</td><td>Nov 18, 2025</td><td class="text-right"><button class="btn">View</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

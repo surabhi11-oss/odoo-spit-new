@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipts — StockMaster</title>
+  <link rel="stylesheet" href="receipts.css">
+</head>
+
+<body>
+<div class="app">
+
+  <!-- SIDEBAR (same as your products page) -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="logo">SM</div>
+      <div class="brand-text">
+        <div class="title">StockMaster</div>
+        <div class="subtitle">Inventory Dashboard</div>
+      </div>
+    </div>
+
+    <nav class="menu">
+      <a class="menu-item" href="index.html">Dashboard</a>
+      <a class="menu-item" href="products.html">Products</a>
+      <a class="menu-item active" href="receipts.html">Receipts</a>
+      <a class="menu-item" href="deliveries.html">Deliveries</a>
+      <a class="menu-item" href="transfers.html">Transfers</a>
+      <a class="menu-item" href="adjustments.html">Adjustments</a>
+      <a class="menu-item" href="moveHistory.html">Move History</a>
+      <a class="menu-item" href="settings.html">Settings</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- Top Bar -->
+    <header class="topbar">
+        <div class="search-row">
+        <input class="search" placeholder="Search Receipts..." aria-label="Search receipts">
+        <select class="warehouse" aria-label="Select warehouse">
+          <option>All Warehouses</option>
+          <option>Warehouse A</option>
+        </select>
+      </div>
+
+      <div class="user-mini">
+        <div class="user-name">User</div>
+        <div class="user-role">Inventory Manager</div>
+        <div class="avatar-circle">U</div>
+      </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <h1>Receipts</h1>
+      <div class="page-actions">
+        <button class="btn" id="newReceipt">New Receipt</button>
+        <button class="btn btn-secondary" id="importReceipts">Import CSV</button>
+      </div>
+    </section>
+
+    <!-- Summary Cards -->
+    <section class="summary">
+      <div class="card">
+        <div class="label">Pending Receipts</div>
+        <div class="value">3</div>
+      </div>
+      <div class="card">
+        <div class="label">Completed</div>
+        <div class="value">12</div>
+      </div>
+      <div class="card">
+        <div class="label">Cancelled</div>
+        <div class="value">1</div>
+      </div>
+    </section>
+
+    <!-- Filters Row -->
+    <section class="filters">
+      <select aria-label="Filter by supplier">
+        <option>All Suppliers</option>
+        <option>ABC Traders</option>
+        <option>Sharma Wholesale</option>
+      </select>
+      <select aria-label="Filter by status">
+        <option>Status: All</option>
+        <option>Pending</option>
+        <option>Completed</option>
+        <option>Cancelled</option>
+      </select>
+
+      <input type="date" aria-label="Start date">
+      <input type="date" aria-label="End date">
+
+      <input class="search-filter" placeholder="Search receipt..." aria-label="Search receipt">
+
+      <button class="btn-small">Filter</button>
+    </section>
+
+    <!-- Timeline Unique Layout -->
+    <section class="timeline-section">
+      <h2>Recent Receipts</h2>
+
+      <div class="timeline">
+
+        <div class="entry">
+          <div class="dot"></div>
+          <div class="content">
+            <div class="date">Nov 20, 2025</div>
+            <div class="title">Receipt #1003</div>
+            <div class="info">Supplier: ABC Traders — Status: Pending — Items: 42</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="dot done"></div>
+          <div class="content">
+            <div class="date">Nov 18, 2025</div>
+            <div class="title">Receipt #1002</div>
+            <div class="info">Supplier: Bharat Supplies — Completed — Items: 18</div>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="dot cancel"></div>
+          <div class="content">
+            <div class="date">Nov 16, 2025</div>
+            <div class="title">Receipt #1001</div>
+            <div class="info">Supplier: XYZ Distributors — Cancelled</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Table -->
+    <section class="panel">
+      <h2>All Receipts</h2>
+
+      <div class="table-wrap">
+        <table class="receipts-table">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Supplier</th>
+            <th>Items</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>1003</td>
+              <td>ABC Traders</td>
+              <td>42</td>
+              <td>Nov 20, 2025</td>
+              <td><span class="badge pending">Pending</span></td>
+              <td><button class="tiny">View</button></td>
+            </tr>
+            <tr>
+              <td>1002</td>
+              <td>Bharat Supplies</td>
+              <td>18</td>
+              <td>Nov 18, 2025</td>
+              <td><span class="badge done">Completed</span></td>
+              <td><button class="tiny">View</button></td>
+            </tr>
+            <tr>
+              <td>1001</td>
+              <td>XYZ Distributors</td>
+              <td>15</td>
+              <td>Nov 16, 2025</td>
+              <td><span class="badge cancel">Cancelled</span></td>
+              <td><button class="tiny danger">Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script>
+document.getElementById("newReceipt").onclick = () => alert("Open New Receipt Form");
+</script>
+
+</body>
+</html>
+

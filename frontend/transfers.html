@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width,initial-scale=1" />
+   <title>Transfers — StockMaster</title>
+   <link rel="stylesheet" href="transfers.css">
+</head>
+
+<body>
+   <div class="app">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+         <div class="brand">
+            <div class="logo">SM</div>
+            <div class="brand-text">
+               <div class="title">StockMaster</div>
+               <div class="subtitle">Inventory Dashboard</div>
+            </div>
+         </div>
+
+         <nav class="menu">
+            <a class="menu-item" href="index.html">Dashboard</a>
+            <a class="menu-item" href="products.html">Products</a>
+            <a class="menu-item" href="receipts.html">Receipts</a>
+            <a class="menu-item" href="deliveries.html">Deliveries</a>
+            <a class="menu-item active" href="transfers.html">Transfers</a>
+            <a class="menu-item" href="adjustments.html">Adjustments</a>
+            <a class="menu-item" href="moveHistory.html">Move History</a>
+            <a class="menu-item" href="settings.html">Settings</a>
+         </nav>
+
+         <div class="sidebar-footer">
+            <a class="pdf-link" href="/mnt/data/StockMaster.pdf">Open StockMaster.pdf</a>
+            <div class="user">
+               <div class="avatar">U</div>
+               <div class="user-info">
+                  <div class="name">User</div>
+                  <div class="role">Inventory Manager</div>
+               </div>
+            </div>
+         </div>
+      </aside>
+
+      <!-- MAIN -->
+      <main class="main">
+         <!-- TOP BAR -->
+         <header class="topbar">
+            <div class="search-row">
+               <input class="search" placeholder="Search transfer id, product..." aria-label="Search transfers" />
+               <select class="warehouse" aria-label="Select warehouse">
+                  <option>All Warehouses</option>
+                  <option>Warehouse A</option>
+                  <option>Warehouse B</option>
+               </select>
+            </div>
+
+            <div class="top-actions">
+               <div class="quick-stats">
+                  <div class="stat">
+                     <div class="stat-title">Total Transfers</div>
+                     <div class="stat-value">--</div>
+                  </div>
+                  <div class="stat">
+                     <div class="stat-title">Pending Transfers</div>
+                     <div class="stat-value">2</div>
+                  </div>
+               </div>
+
+               <div class="user-mini">
+                  <div class="user-name">User</div>
+                  <div class="user-role">Inventory Manager</div>
+                  <div class="avatar-circle">U</div>
+               </div>
+            </div>
+         </header>
+
+         <!-- PAGE TITLE -->
+         <section class="page-header">
+            <h1>Transfers</h1>
+            <div class="page-actions">
+               <a class="btn btn-secondary" href="index.html">Back to Dashboard</a>
+               <button class="btn btn-secondary" id="importCsv">Import CSV</button>
+               <button class="btn" id="newTransfer">New Transfer</button>
+            </div>
+         </section>
+
+         <!-- TRANSFERS TABLE -->
+         <section class="panel">
+            <div class="panel-header">
+               <h2>Transfer List</h2>
+               <div class="panel-controls">
+                  <input class="table-search" placeholder="Filter transfers..." aria-label="Filter transfers" />
+                  <select class="per-page" aria-label="Transfers per page">
+                     <option>10 / page</option>
+                     <option>25 / page</option>
+                     <option>50 / page</option>
+                  </select>
+               </div>
+            </div>
+
+            <div class="table-wrap">
+               <table class="products-table transfers-table">
+                  <thead>
+                     <tr>
+                        <th>Transfer ID</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Products</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                     </tr>
+                  </thead>
+                  <tbody id="transfersBody">
+                     <tr>
+                        <td>TRF-001</td>
+                        <td>Main Warehouse</td>
+                        <td>Production Floor</td>
+                        <td>5</td>
+                        <td><span class="badge pending">Pending</span></td>
+                        <td>2025-11-20</td>
+                        <td>
+                           <button class="tiny">View</button>
+                           <button class="tiny danger">Cancel</button>
+                        </td>
+                     </tr>
+
+                     <tr>
+                        <td>TRF-002</td>
+                        <td>Warehouse 1</td>
+                        <td>Warehouse 2</td>
+                        <td>12</td>
+                        <td><span class="badge done">Done</span></td>
+                        <td>2025-11-18</td>
+                        <td>
+                           <button class="tiny">View</button>
+                           <button class="tiny">Reopen</button>
+                        </td>
+                     </tr>
+
+                     <tr>
+                        <td>TRF-003</td>
+                        <td>Main Warehouse</td>
+                        <td>Retail Outlet</td>
+                        <td>3</td>
+                        <td><span class="badge ready">Ready</span></td>
+                        <td>2025-11-21</td>
+                        <td>
+                           <button class="tiny">Pick</button>
+                           <button class="tiny">Edit</button>
+                        </td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+
+            <!-- table footer -->
+            <div class="table-footer">
+               <div class="left">Showing 3 of 3 transfers</div>
+               <div class="right">
+                  <button class="tiny">Prev</button>
+                  <button class="tiny">Next</button>
+               </div>
+            </div>
+         </section>
+
+         <!-- REFERENCE PREVIEW (uploaded screenshot) -->
+         <footer class="reference">
+            <div>Reference screenshot (uploaded):</div>
+            <img src="/mnt/data/d7e74c80-d7a1-494f-84f6-a3e04b38e42c.png" alt="reference screenshot" />
+         </footer>
+      </main>
+   </div>
+
+   <script>
+      // Basic behaviour: demo actions
+      document.getElementById('newTransfer').addEventListener('click', () => {
+         alert('Open New Transfer form (implement modal or page).');
+      });
+      document.getElementById('importCsv').addEventListener('click', () => {
+         alert('Open CSV import dialog.');
+      });
+
+      // simple table filter (client-side)
+      const tableSearch = document.querySelector('.table-search');
+      tableSearch.addEventListener('input', (e) => {
+         const q = e.target.value.toLowerCase().trim();
+         document.querySelectorAll('#transfersBody tr').forEach(row => {
+            const txt = row.innerText.toLowerCase();
+            row.style.display = txt.includes(q) ? '' : 'none';
+         });
+      });
+   </script>
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Sections</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">SM</div>
+        <div class="brand-text">
+          <div class="title">StockMaster</div>
+          <div class="subtitle">Inventory Dashboard</div>
+        </div>
+      </div>
+
+      <nav class="menu">
+        <a class="menu-item" href="index.html">Dashboard</a>
+        <a class="menu-item active" href="products.html">Products</a>
+        <a class="menu-item" href="receipts.html">Receipts</a>
+        <a class="menu-item" href="deliveries.html">Deliveries</a>
+        <a class="menu-item" href="transfers.html">Transfers</a>
+        <a class="menu-item" href="adjustments.html">Adjustments</a>
+        <a class="menu-item" href="moveHistory.html">Move History</a>
+        <a class="menu-item" href="settings.html">Settings</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="pdf-link" href="#">Open StockMaster.pdf</a>
+        <div class="user">
+          <div class="avatar">U</div>
+          <div class="user-info">
+            <div class="name">USER</div>
+            <div class="role">Inventory Manager</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div class="search-row">
+          <input class="search" placeholder="Search SKU, product..." aria-label="Search products" />
+          <select class="warehouse" aria-label="Select warehouse">
+            <option>All Warehouses</option>
+            <option>Warehouse A</option>
+          </select>
+        </div>
+
+        <div class="top-actions">
+          <div class="quick-stats">
+            <div class="stat">
+              <div class="stat-title">Total Products in Stock</div>
+              <div class="stat-value">--</div>
+            </div>
+            <div class="stat">
+              <div class="stat-title">Low Stock / Out of Stock</div>
+              <div class="stat-value">--</div>
+            </div>
+          </div>
+
+          <div class="user-mini">
+            <div class="user-name">User</div>
+            <div class="user-role">Inventory Manager</div>
+            <div class="avatar-circle">U</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE TITLE -->
+      <section class="page-header">
+        <h1>Products</h1>
+        <div class="page-actions">
+          <a class="btn btn-secondary" href="hero.html">Back to Dashboard</a>
+          <button class="btn btn-secondary" id="importCsv">Import CSV</button>
+          <button class="btn" id="newProduct">New Product</button>
+        </div>
+      </section>
+
+      <!-- PRODUCTS TABLE -->
+      <section class="panel">
+        <div class="panel-header">
+          <h2>Product List</h2>
+          <div class="panel-controls">
+            <input class="table-search" placeholder="Filter products..." aria-label="Filter products" />
+            <select class="per-page" aria-label="Products per page">
+              <option>10 / page</option>
+              <option>25 / page</option>
+              <option>50 / page</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table class="products-table">
+            <thead>
+              <tr>
+                <th>SKU</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Reorder Level</th>
+                <th>Price</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="productsBody">
+              <!-- sample rows -->
+              <tr>
+                <td>PRD-001</td>
+                <td>Plain T-Shirt</td>
+                <td>Apparel</td>
+                <td>120</td>
+                <td>20</td>
+                <td>₹249</td>
+                <td>
+                  <button class="tiny">Edit</button>
+                  <button class="tiny danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>PRD-002</td>
+                <td>Bluetooth Mouse</td>
+                <td>Accessories</td>
+                <td>45</td>
+                <td>10</td>
+                <td>₹799</td>
+                <td>
+                  <button class="tiny">Edit</button>
+                  <button class="tiny danger">Delete</button>
+                </td>
+              </tr>
+              <tr>
+                <td>PRD-003</td>
+                <td>Notebook A4</td>
+                <td>Stationery</td>
+                <td>0</td>
+                <td>10</td>
+                <td>₹59</td>
+                <td>
+                  <button class="tiny">Edit</button>
+                  <button class="tiny danger">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- table footer -->
+        <div class="table-footer">
+          <div class="left">Showing 3 of 3 products</div>
+          <div class="right">
+            <button class="tiny">Prev</button>
+            <button class="tiny">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- REFERENCE PREVIEW (your uploaded screenshot) -->
+      <footer class="reference">
+        <div>Reference screenshot (uploaded):</div>
+        <img src="/mnt/data/Screenshot 2025-11-22 120531.png" alt="reference screenshot" />
+      </footer>
+    </main>
+  </div>
+  <script>
+    // Basic sidebar navigation behavior (for pages that use <a> links this will work; keep script on all pages)
+    document.querySelectorAll('.menu a, .menu-item').forEach(el => {
+      el.addEventListener('click', (e) => {
+        // allow normal anchor clicks; if you want JS navigation replace with window.location.href
+      });
+    });
+
+    // New Product and Import CSV demo actions
+    document.getElementById('newProduct').addEventListener('click', () => {
+      // in real app open a modal or navigate to add-product page
+      alert('Open New Product form (implement form or page).');
+    });
+    document.getElementById('importCsv').addEventListener('click', () => {
+      alert('Open CSV import dialog (you can implement file input here).');
+    });
+
+    // Small table filter (client-side)
+    const tableSearch = document.querySelector('.table-search');
+    tableSearch.addEventListener('input', (e) => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('#productsBody tr').forEach(row => {
+        const txt = row.innerText.toLowerCase();
+        row.style.display = txt.includes(q) ? '' : 'none';
+      });
+    });
+  </script>
+    </div>
+
+</body>
+</html>
