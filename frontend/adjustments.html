@@ -1,213 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Adjustments — StockMaster</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adjustments — StockMaster</title>
 
-    <!-- MAIN THEME CSS (important) -->
-    <link rel="stylesheet" href="hero.css">
-
-    <!-- PAGE SPECIFIC CSS -->
-    <link rel="stylesheet" href="adjustments.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- main theme -->
+  <link rel="stylesheet" href="transfers.css" />
+  <!-- page overrides -->
+  <link rel="stylesheet" href="adjustments.css" />
 </head>
-
 <body>
-<div class="layout">
-
+  <div class="app">
     <!-- SIDEBAR -->
-    <div class="sidebar">
-        <div class="logo-box">
-            <div class="logo">SM</div>
-            <div>
-                <h2>StockMaster</h2>
-                <small class="subtitle">Inventory Dashboard</small>
-            </div>
+    <aside class="sidebar" role="complementary" aria-label="Main sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">SM</div>
+        <div class="brand-text">
+          <div class="title">StockMaster</div>
+          <div class="subtitle">Inventory Dashboard</div>
+        </div>
+      </div>
+
+      <nav class="menu" role="navigation" aria-label="Primary">
+        <a class="menu-item" href="index.html">Dashboard</a>
+        <a class="menu-item" href="products.html">Products</a>
+        <a class="menu-item" href="receipts.html">Receipts</a>
+        <a class="menu-item" href="deliveries.html">Deliveries</a>
+        <a class="menu-item" href="transfers.html">Transfers</a>
+        <a class="menu-item active" href="adjustments.html">Adjustments</a>
+        <a class="menu-item" href="move-history.html">Move History</a>
+        <a class="menu-item" href="settings.html">Settings</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="pdf-link" href="/mnt/data/StockMaster.pdf">Open StockMaster.pdf</a>
+        <div class="user">
+          <div class="avatar" title="User">U</div>
+          <div class="user-info">
+            <div class="name">User</div>
+            <div class="role">Inventory Manager</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" role="main">
+      <!-- TOP BAR -->
+      <header class="topbar" role="banner">
+        <div class="search-row">
+          <input class="search" placeholder="Search product / adjustment..." aria-label="Search adjustments" />
+          <select class="warehouse" aria-label="Select warehouse">
+            <option>All Warehouses</option>
+          </select>
         </div>
 
-        <div class="nav">
-            <a class="nav-item" href="hero.html">Dashboard</a>
-            <a class="nav-item" href="products.html">Products</a>
-            <a class="nav-item" href="receipts.html">Receipts</a>
-            <a class="nav-item" href="deliveries.html">Deliveries</a>
-            <a class="nav-item" href="transfers.html">Transfers</a>
-            <a class="nav-item active" href="adjustments.html">Adjustments</a>
-            <a class="nav-item" href="move-history.html">Move History</a>
-            <a class="nav-item" href="settings.html">Settings</a>
+        <div class="top-actions" aria-hidden="true">
+          <div class="user-mini">
+            <div class="user-name">User</div>
+            <div class="user-role">Inventory Manager</div>
+            <div class="avatar-circle" title="User">U</div>
+          </div>
         </div>
-    </div>
+      </header>
 
+      <!-- PAGE HEADER -->
+      <section class="page-header">
+        <h1>Inventory Adjustments</h1>
+        <div class="page-actions">
+          <a class="btn btn-secondary" href="index.html">Back to Dashboard</a>
+          <button class="btn" id="newAdjustment">+ New Adjustment</button>
+        </div>
+      </section>
 
-    <!-- MAIN CONTENT -->
-    <main class="main">
+      <!-- KPI CARDS -->
+      <section class="panel" style="margin-top:12px;">
+        <div class="panel-header">
+          <h2 style="margin:0;font-size:16px">Summary</h2>
+        </div>
 
-        <!-- TOP BAR -->
-        <div class="top-bar">
-            <input type="text" class="search" placeholder="Search product / adjustment..." aria-label="Search adjustments">
-            <select class="warehouse" aria-label="Select warehouse">
-                <option>All Warehouses</option>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
+          <div class="stat" style="min-width:160px;">
+            <div class="stat-title">Pending Adjustments</div>
+            <div class="stat-value" id="pendingVal">4</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:6px">Awaiting approval</div>
+          </div>
+
+          <div class="stat" style="min-width:160px;">
+            <div class="stat-title">Completed</div>
+            <div class="stat-value" id="completedVal">18</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:6px">Stock synced</div>
+          </div>
+
+          <div class="stat" style="min-width:160px;">
+            <div class="stat-title">Negative Adjustments</div>
+            <div class="stat-value" id="negativeVal">7</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:6px">Damaged / Missing</div>
+          </div>
+
+          <div class="stat" style="min-width:160px;">
+            <div class="stat-title">Positive Adjustments</div>
+            <div class="stat-value" id="positiveVal">11</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:6px">Excess / Found</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FILTERS -->
+      <section class="panel" style="margin-top:12px;">
+        <div class="panel-header">
+          <h2 style="margin:0;font-size:16px">Filter Adjustments</h2>
+          <div class="panel-controls">
+            <input class="table-search" placeholder="Search adjustment..." aria-label="Search adjustments" />
+            <select class="per-page" aria-label="Quick filter">
+              <option>All Products</option>
             </select>
-            <div class="user-box">
-                <div class="user-info">
-                    <b>User</b><br>
-                    <small>Inventory Manager</small>
-                </div>
-                <div class="user-icon">U</div>
-            </div>
+          </div>
         </div>
 
-        <!-- PAGE TITLE -->
-        <div class="page-title-row">
-            <h1>Inventory Adjustments</h1>
-            <button class="btn-primary" onclick="location.href='adjustment-new.html'">
-                + New Adjustment
-            </button>
+        <div style="display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap;">
+          <select id="statusFilter" aria-label="Filter by status">
+            <option value="">Status — All</option>
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+
+          <select id="productFilter" aria-label="Filter by product">
+            <option value="">All Products</option>
+          </select>
+
+          <input type="date" id="startDate" aria-label="Start date" />
+          <input type="date" id="endDate" aria-label="End date" />
+
+          <button class="btn btn-secondary" id="applyFilters">Filter</button>
+        </div>
+      </section>
+
+      <!-- RECENT ADJUSTMENTS (timeline) -->
+      <section class="panel" style="margin-top:12px;">
+        <div class="panel-header">
+          <h2 style="margin:0;font-size:16px">Recent Adjustments</h2>
         </div>
 
-        <!-- SUMMARY CARDS -->
-        <div class="kpi-grid">
-            <div class="card">
-                <h3>Pending Adjustments</h3>
-                <p class="value">4</p>
-                <span>Awaiting approval</span>
+        <div class="table-wrap" style="margin-top:12px;">
+          <div id="timelineList" style="display:flex;flex-direction:column;gap:12px;">
+            <div class="panel" style="padding:10px;display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:6px"></div>
+              <div>
+                <div style="color:var(--muted);font-size:13px">2025-11-21</div>
+                <div style="font-weight:700">Adjustment #A119 — Pending</div>
+                <div style="color:#8faecc">Product: Steel Rods — Difference: -3</div>
+              </div>
             </div>
 
-            <div class="card">
-                <h3>Completed</h3>
-                <p class="value">18</p>
-                <span>Stock synced</span>
+            <div class="panel" style="padding:10px;display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--success);margin-top:6px"></div>
+              <div>
+                <div style="color:var(--muted);font-size:13px">2025-11-19</div>
+                <div style="font-weight:700">Adjustment #A118 — Approved</div>
+                <div style="color:#8faecc">Product: Bolts — Difference: +12</div>
+              </div>
             </div>
 
-            <div class="card">
-                <h3>Negative Adjustments</h3>
-                <p class="value">7</p>
-                <span>Damaged / Missing</span>
+            <div class="panel" style="padding:10px;display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--danger);margin-top:6px"></div>
+              <div>
+                <div style="color:var(--muted);font-size:13px">2025-11-16</div>
+                <div style="font-weight:700">Adjustment #A117 — Rejected</div>
+                <div style="color:#8faecc">Product: Copper Sheets — Difference: -5</div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="card">
-                <h3>Positive Adjustments</h3>
-                <p class="value">11</p>
-                <span>Excess / Found</span>
-            </div>
+      <!-- TABLE: All Adjustments -->
+      <section class="panel" style="margin-top:12px;">
+        <div class="panel-header">
+          <h2 style="margin:0;font-size:16px">All Adjustments</h2>
+          <div class="panel-controls">
+            <input class="table-search" placeholder="Filter table..." aria-label="Filter table" />
+            <select class="per-page" aria-label="Rows per page">
+              <option value="10">10 / page</option>
+              <option value="25">25 / page</option>
+            </select>
+          </div>
         </div>
 
-        <!-- FILTER CARD -->
-        <div class="big-card">
-            <h2>Filter Adjustments</h2>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table class="transfers-table" aria-label="Adjustments table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Old Qty</th>
+                <th>New Qty</th>
+                <th>Difference</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
 
-            <div class="filter-row">
-                <select aria-label="Filter by status">
-                    <option>Status — All</option>
-                    <option>Pending</option>
-                    <option>Approved</option>
-                    <option>Rejected</option>
-                </select>
-                <select aria-label="Filter by product">
-                    <option>All Products</option>
-                </select>
+            <tbody id="adjustmentsBody">
+              <tr data-status="pending" data-date="2025-11-21">
+                <td>A119</td>
+                <td>Steel Rods</td>
+                <td>150</td>
+                <td>147</td>
+                <td><span class="badge danger">-3</span></td>
+                <td><span class="badge pending">Pending</span></td>
+                <td>2025-11-21</td>
+                <td><button class="tiny viewBtn">View</button></td>
+              </tr>
 
-                <input type="date" aria-label="Start date">
-                <input type="date" aria-label="End date">
+              <tr data-status="approved" data-date="2025-11-19">
+                <td>A118</td>
+                <td>Bolts</td>
+                <td>300</td>
+                <td>312</td>
+                <td><span class="badge done">+12</span></td>
+                <td><span class="badge done">Approved</span></td>
+                <td>2025-11-19</td>
+                <td><button class="tiny viewBtn">View</button></td>
+              </tr>
 
-                <input type="text" class="search" placeholder="Search adjustment..." aria-label="Search adjustments">
-                <button class="btn-primary small">Filter</button>
-            </div>
+              <tr data-status="rejected" data-date="2025-11-16">
+                <td>A117</td>
+                <td>Copper Sheets</td>
+                <td>80</td>
+                <td>75</td>
+                <td><span class="badge danger">-5</span></td>
+                <td><span class="badge danger">Rejected</span></td>
+                <td>2025-11-16</td>
+                <td><button class="tiny viewBtn">View</button></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        <!-- RECENT ADJUSTMENTS LIST -->
-        <div class="big-card">
-            <h2>Recent Adjustments</h2>
-
-            <div class="timeline">
-
-                <div class="timeline-item">
-                    <div class="dot yellow"></div>
-                    <div>
-                        <p class="t-date">Nov 21, 2025</p>
-                        <p class="t-title">Adjustment #A119 — Pending</p>
-                        <p class="t-sub">Product: Steel Rods — Difference: -3</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="dot green"></div>
-                    <div>
-                        <p class="t-date">Nov 19, 2025</p>
-                        <p class="t-title">Adjustment #A118 — Approved</p>
-                        <p class="t-sub">Product: Bolts — Difference: +12</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="dot red"></div>
-                    <div>
-                        <p class="t-date">Nov 16, 2025</p>
-                        <p class="t-title">Adjustment #A117 — Rejected</p>
-                        <p class="t-sub">Product: Copper Sheets — Difference: -5</p>
-                    </div>
-                </div>
-
-            </div>
+        <div class="table-footer" style="margin-top:12px;">
+          <div class="left" id="adjustInfo">Showing 3 of 3 adjustments</div>
+          <div class="right">
+            <button class="tiny" id="prevAdj">Prev</button>
+            <button class="tiny" id="nextAdj">Next</button>
+          </div>
         </div>
-
-        <!-- TABLE LIST -->
-        <div class="big-card">
-            <h2>All Adjustments</h2>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Product</th>
-                        <th>Old Qty</th>
-                        <th>New Qty</th>
-                        <th>Difference</th>
-                        <th>Status</th>
-                        <th>Date</th>
-                        <th class="text-right">Action</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>A119</td>
-                        <td>Steel Rods</td>
-                        <td>150</td>
-                        <td>147</td>
-                        <td><span class="pill red">-3</span></td>
-                        <td><span class="pill yellow">Pending</span></td>
-                        <td>Nov 21, 2025</td>
-                        <td class="text-right"><button class="btn-ghost">View</button></td>
-                    </tr>
-
-                    <tr>
-                        <td>A118</td>
-                        <td>Bolts</td>
-                        <td>300</td>
-                        <td>312</td>
-                        <td><span class="pill green">+12</span></td>
-                        <td><span class="pill green">Approved</span></td>
-                        <td>Nov 19, 2025</td>
-                        <td class="text-right"><button class="btn-ghost">View</button></td>
-                    </tr>
-
-                    <tr>
-                        <td>A117</td>
-                        <td>Copper Sheets</td>
-                        <td>80</td>
-                        <td>75</td>
-                        <td><span class="pill red">-5</span></td>
-                        <td><span class="pill red">Rejected</span></td>
-                        <td>Nov 16, 2025</td>
-                        <td class="text-right"><button class="btn-ghost">View</button></td>
-                    </tr>
-                </tbody>
-
-            </table>
-        </div>
-
+      </section>
     </main>
-</div>
+  </div>
+
+  <script>
+    (function () {
+      // elements & state
+      const body = document.getElementById('adjustmentsBody');
+      const rows = Array.from(body.querySelectorAll('tr'));
+      const tableSearchInputs = document.querySelectorAll('.table-search');
+      const statusFilter = document.getElementById('statusFilter');
+      const applyFilters = document.getElementById('applyFilters');
+      const perPageSelect = document.querySelector('.per-page');
+      const prevBtn = document.getElementById('prevAdj');
+      const nextBtn = document.getElementById('nextAdj');
+      const info = document.getElementById('adjustInfo');
+      let currentPage = 1;
+
+      // demo create new adjustment action
+      document.getElementById('newAdjustment')?.addEventListener('click', () => {
+        alert('Open New Adjustment form (demo).');
+      });
+
+      // quick table search (applies to every .table-search on page)
+      tableSearchInputs.forEach(inp => inp.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        rows.forEach(r => {
+          const txt = r.innerText.toLowerCase();
+          r.style.display = txt.includes(q) ? '' : 'none';
+        });
+        currentPage = 1; renderPage();
+      }));
+
+      // apply filters
+      applyFilters?.addEventListener('click', () => {
+        const status = (statusFilter?.value || '').toLowerCase();
+        const start = document.getElementById('startDate')?.value;
+        const end = document.getElementById('endDate')?.value;
+        rows.forEach(r => {
+          let show = true;
+          if (status) show = (r.dataset.status === status);
+          if (show && start) show = new Date(r.dataset.date) >= new Date(start);
+          if (show && end) show = new Date(r.dataset.date) <= new Date(end);
+          r.style.display = show ? '' : 'none';
+        });
+        currentPage = 1; renderPage();
+      });
+
+      // pagination helpers
+      function getPerPage() { return parseInt(perPageSelect?.value || '10', 10) || 10; }
+      function renderPage() {
+        const perPage = getPerPage();
+        const visible = rows.filter(r => r.style.display !== 'none');
+        const total = visible.length;
+        const pages = Math.max(1, Math.ceil(total / perPage));
+        if (currentPage > pages) currentPage = pages;
+
+        rows.forEach(r => r.style.display = 'none');
+        const start = (currentPage - 1) * perPage;
+        const slice = visible.slice(start, start + perPage);
+        slice.forEach(r => r.style.display = '');
+
+        const from = total === 0 ? 0 : start + 1;
+        const to = Math.min(start + slice.length, total);
+        info.textContent = `Showing ${from} - ${to} of ${total} adjustments`;
+
+        prevBtn.disabled = currentPage <= 1;
+        nextBtn.disabled = currentPage >= pages;
+      }
+
+      prevBtn?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(); }});
+      nextBtn?.addEventListener('click', () => { currentPage++; renderPage(); });
+
+      renderPage();
+
+      // view action
+      body.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const row = btn.closest('tr');
+        const id = row?.children[0]?.textContent;
+        if (btn.classList.contains('viewBtn')) {
+          alert('View adjustment ' + id);
+        }
+      });
+
+      // mark active menu item
+      (function markActiveMenu() {
+        const path = location.pathname.split('/').pop() || 'adjustments.html';
+        document.querySelectorAll('.menu a').forEach(a => {
+          const href = a.getAttribute('href') || '';
+          a.classList.toggle('active', href === path || (path === '' && href === 'index.html'));
+        });
+      })();
+    })();
+  </script>
 </body>
 </html>
