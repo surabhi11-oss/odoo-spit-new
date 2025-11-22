@@ -1,0 +1,197 @@
+/* ---------- BASIC RESET ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #0b1220;
+    color: #d7e6f6;
+}
+
+/* ---------- LAYOUT GRID ---------- */
+.layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    height: 100vh;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+    background: #0e1528;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.logo-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #6be3b0, #6ec8ff);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #00454f;
+}
+
+.subtitle {
+    color: #7fa2bf;
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.nav-item {
+    padding: 10px;
+    border-radius: 6px;
+    color: #96a9c9;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+/* ---------- MAIN CONTENT ---------- */
+.main {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Top bar */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+input,
+select {
+    background: rgba(255, 255, 255, 0.09);
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    color: #fff;
+}
+
+/* User Box */
+.user-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info small {
+    color: #92b1c9;
+}
+
+.user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffbf69;
+    color: #3f2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* ---------- CARDS ---------- */
+.cards {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 15px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+.card-title {
+    font-size: 14px;
+    color: #91a7c7;
+}
+
+.card-value {
+    font-size: 24px;
+    margin-top: 5px;
+}
+
+/* ---------- PANEL ---------- */
+.panel {
+    margin-top: 25px;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.chart-placeholder {
+    margin-top: 20px;
+    height: 150px;
+    border: 1px dashed #3f4f78;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6f8fb1;
+}
+
+.btn-box {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.09);
+    color: #fff;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, #67e7c8, #7cc9ff);
+    color: #00383c;
+    font-weight: bold;
+}
+
+/* ---------- LOW STOCK ---------- */
+.low-stock {
+    margin-top: 25px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.low-stock-header {
+    margin-top: 10px;
+    color: #95b4c3;
+}
+
+.no-data {
+    margin-top: 20px;
+    text-align: center;
+    color: #7ea5b8;
+}

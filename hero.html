@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StockMaster Dashboard</title>
+
+    <!-- Linking External CSS -->
+    <link rel="stylesheet" href="hero.css" />
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- ---------- SIDEBAR ---------- -->
+        <div class="sidebar">
+
+            <div class="logo-box">
+                <div class="logo">SM</div>
+                <div>
+                    <h2>StockMaster</h2>
+                    <small class="subtitle">Inventory Dashboard</small>
+                </div>
+            </div>
+
+            <div class="nav">
+                <a class="nav-item" href="hero.html">Dashboard</a>
+                <a class="nav-item" href="products.html">Products</a>
+                <a class="nav-item" href="receipts.html">Receipts</a>
+                <a class="nav-item" href="deliveries.html">Deliveries</a>
+                <a class="nav-item" href="transfers.html">Transfers</a>
+                <a class="nav-item" href="adjustments.html">Adjustments</a>
+                <a class="nav-item" href="move-history.html">Move History</a>
+                <a class="nav-item" href="other.html">Other</a>
+                <a class="nav-item" href="settings.html">Settings</a>
+            </div>
+
+        </div>
+
+        <!-- ---------- MAIN CONTENT ---------- -->
+        <div class="main">
+
+            <!-- Search + User -->
+            <div class="top-bar">
+                <div>
+                    <input type="text" placeholder="Search SKU...">
+                    <select>
+                        <option>All Warehouses</option>
+                    </select>
+                </div>
+
+                <div class="user-box">
+                    <div class="user-info">
+                        <b>User</b><br>
+                        <small>Inventory Manager</small>
+                    </div>
+                    <div class="user-icon">U</div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">
+                        < div class="menu-item" data-page=" index.html>Total Products in Stock</div>
+                    <div class=" card-value">--
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Low Stock / Out of Stock</div>
+                    <div class="card-value">--</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Pending Receipts</div>
+                    <div class="card-value">--</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Pending Deliveries</div>
+                    <div class="card-value">--</div>
+                </div>
+            </div>
+
+            <!-- Main Panel -->
+            <div class="panel">
+                <h2>Stock Overview (Last 30 Days)</h2>
+
+                <div class="chart-placeholder">
+                    Chart Placeholder
+                </div>
+
+                <div class="btn-box">
+                    <button class="btn">New Receipt</button>
+                    <button class="btn">New Delivery</button>
+                    <button class="btn">Transfer</button>
+                    <button class="btn btn-primary">Export CSV</button>
+                </div>
+            </div>
+
+            <!-- Low Stock Section -->
+            <div class="low-stock">
+                <h3>Top Low-stock Items</h3>
+                <p class="low-stock-header">SKU — Item — Stock</p>
+                <p class="no-data">No low-stock items</p>
+            </div>
+
+            <script src="hero.js"></script>
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
