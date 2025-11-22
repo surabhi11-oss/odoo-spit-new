@@ -1,7 +1,11 @@
 package com.stockmaster.stockmaster_backend.entity;
-
-import jakarta.persistence.*;
 import lombok.Data;
+import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Data
 @Entity
@@ -15,17 +19,12 @@ public class User {
     @Column(nullable = false, unique = true)
     private String username;
 
-    private String fullName;
+    @Column(nullable = false)
+    private String name;        // 👈 add this
 
-    // For now plain string; later you can plug in Spring Security & hashing
+    @Column(nullable = false)
+    private String role;
+
+    @Column(nullable = false)
     private String password;
-
-    @Enumerated(EnumType.STRING)
-    private Role role = Role.MANAGER;
-
-    public enum Role {
-        ADMIN,
-        MANAGER,
-        VIEWER
-    }
 }
