@@ -1,248 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up — StockMaster</title>
-
-    <!-- MAIN THEME (variables & dark UI) -->
-    <link rel="stylesheet" href="transfers.css">
-
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <style>
-        /* Override layout to remove sidebar and center card */
-        .signup-page {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: var(--bg);
-            padding: 20px;
-        }
-
-        .signup-card {
-            width: 420px;
-            background: rgba(255, 255, 255, 0.03);
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
-            border-radius: 12px;
-            padding: 32px;
-            color: #dceaf7;
-        }
-
-        .signup-title {
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 22px;
-            font-weight: 600;
-            color: #e7f7ff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-        }
-
-        label {
-            display: block;
-            font-size: 13px;
-            margin-top: 16px;
-            margin-bottom: 6px;
-            color: var(--muted);
-        }
-
-        .input-box,
-        input {
-            width: 100%;
-        }
-
-        input {
-            background: #0c1620;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px 14px;
-            border-radius: 8px;
-            color: #e7f7ff;
-            outline: none;
-            font-size: 14px;
-        }
-
-        input:focus {
-            border-color: var(--accent);
-        }
-
-        .password-box {
-            position: relative;
-        }
-
-        .eye-icon {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #9fb0c6;
-        }
-
-        #sign-up-button {
-            width: 100%;
-            background: var(--accent);
-            color: #072521;
-            padding: 12px;
-            margin-top: 22px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        #sign-up-button:hover {
-            background: var(--accent-2);
-            color: #001a25;
-        }
-
-        .small-text {
-            text-align: center;
-            margin-top: 16px;
-            color: #9fb0c6;
-            font-size: 14px;
-        }
-
-        .small-text a {
-            color: var(--accent-2);
-            text-decoration: none;
-        }
-
-        .divider {
-            text-align: center;
-            color: #7c8ea3;
-            margin: 18px 0;
-            font-size: 14px;
-        }
-
-        .passkey-btn {
-            width: 100%;
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            color: #d8eaf6;
-            font-size: 14px;
-        }
-
-        .passkey-btn:hover {
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .powered {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 12px;
-            color: #8faecc;
-        }
-    </style>
-</head>
-
-<body>
-
-<<<<<<< HEAD:signup.html
-    <div class="signup-page">
-        <div class="signup-card">
-
-            <h2 class="signup-title">
-                <i class="fa-regular fa-image"></i> Sign Up
-            </h2>
-=======
-<div class="signup">
-    <div class="signup-card">
-
-        <h2 class="SIGN-UP-TEXT">
-            <i class="fa-regular fa-image"></i> SIGN UP
-        </h2>
->>>>>>> a648569403bae8c3324154bbf5e5bbf787162087:frontend/signup.html
-
-            <form>
-                <label>Enter Your Name</label>
-                <input type="text" placeholder="John Carter" required>
-
-<<<<<<< HEAD:signup.html
-                <label>Enter Your Email</label>
-                <input type="email" placeholder="hello@example.com" required>
-=======
-            <label>Enter Your Email</label>
-            <input type="email" placeholder="hello@example.com" required>
->>>>>>> a648569403bae8c3324154bbf5e5bbf787162087:frontend/signup.html
-
-                <label>Set Up Your Password</label>
-                <div class="password-box">
-                    <input type="password" placeholder="••••••••" required>
-                    <i class="fa-regular fa-eye eye-icon"></i>
-                </div>
-
-<<<<<<< HEAD:signup.html
-                <label>Confirm Password</label>
-                <div class="password-box">
-                    <input type="password" placeholder="••••••••" required>
-                    <i class="fa-regular fa-eye eye-icon"></i>
-                </div>
-=======
-            <label>Confirm Your Password</label>
-            <div class="password-box">
-                <input type="password" placeholder="••••••••" required>
-                <i class="fa-regular fa-eye eye-icon"></i>
-            </div>
->>>>>>> a648569403bae8c3324154bbf5e5bbf787162087:frontend/signup.html
-
-                <button id="sign-up-button" type="submit">Create Account</button>
-
-                <p class="small-text">
-                    Already have an account?
-                    <a href="login.html">Log in</a>
-                </p>
-
-<<<<<<< HEAD:signup.html
-                <p class="divider">or</p>
-
-                <button class="passkey-btn" type="button">
-                    <i class="fa-solid fa-qrcode"></i> Use a Passkey
-                </button>
-            </form>
-=======
-            <p class="divider">or</p>
-
-            <button class="passkey-btn">
-                <i class="fa-solid fa-qrcode"></i> Use a Passkey
-            </button>
->>>>>>> a648569403bae8c3324154bbf5e5bbf787162087:frontend/signup.html
-
-            <p class="powered">Powered by Pratik Devang & Team</p>
-        </div>
-    </div>
-<<<<<<< HEAD:signup.html
-=======
-</div>
->>>>>>> a648569403bae8c3324154bbf5e5bbf787162087:frontend/signup.html
-
-</body>
-
-</html>
-
-
-=======
 <head>
     <meta charset="UTF-8">
     <title>Sign Up - StockMaster</title>
-    <link rel="stylesheet" href="frontend/style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
 
 <div class="signup">
-
     <div class="signup-card">
+
         <h2 class="SIGN-UP-TEXT">
             <i class="fa-regular fa-image"></i> SIGN UP
         </h2>
@@ -272,21 +41,19 @@
                 Already have an account? <a href="#">Log in</a>
             </p>
 
-            <p class="divider"> or </p>
+            <p class="divider">or</p>
 
             <button type="button" class="passkey-btn">
-                <i class="fa-solid fa-qrcode"></i>
-                Use a Passkey
+                <i class="fa-solid fa-qrcode"></i> Use a Passkey
             </button>
 
         </form>
 
         <p class="powered">Powered by Pratik Devang & Team</p>
     </div>
-
 </div>
-<script src="signup.js"></script>
 
-</body>
-</html>
->>>>>>> 1c424ef482b4c307865c8557904a0846097364aa
+    <script src="../signup.js"></script>
+
+    </body>
+    </html>
