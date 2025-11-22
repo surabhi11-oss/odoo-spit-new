@@ -12,4 +12,4 @@ The StockMaster project is an Inventory Management System designed to replace ma
 
 Reviewer's Name: Aman Patel.
 
-Video link:
+Video link:https://drive.google.com/file/d/1Jqtc9p4S_uau3Q-zxn_1nuap9CcSNFLG/view?usp=sharing
