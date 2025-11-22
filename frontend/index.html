@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard — StockMaster</title>
+
+  <!-- Main theme (shared with other pages) -->
+  <link rel="stylesheet" href="transfers.css" />
+  <!-- Optional page overrides -->
+  <link rel="stylesheet" href="hero.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" role="complementary" aria-label="Main sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">SM</div>
+        <div class="brand-text">
+          <div class="title">StockMaster</div>
+          <div class="subtitle">Inventory Dashboard</div>
+        </div>
+      </div>
+
+      <nav class="menu" role="navigation" aria-label="Primary">
+        <a class="menu-item active" href="index.html">Dashboard</a>
+        <a class="menu-item" href="products.html">Products</a>
+        <a class="menu-item" href="receipts.html">Receipts</a>
+        <a class="menu-item" href="deliveries.html">Deliveries</a>
+        <a class="menu-item" href="transfers.html">Transfers</a>
+        <a class="menu-item" href="adjustments.html">Adjustments</a>
+        <a class="menu-item" href="move-history.html">Move History</a>
+        <a class="menu-item" href="settings.html">Settings</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="pdf-link" href="/mnt/data/StockMaster.pdf">Open StockMaster.pdf</a>
+        <div class="user">
+          <div class="avatar" title="User">U</div>
+          <div class="user-info">
+            <div class="name">User</div>
+            <div class="role">Inventory Manager</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" role="main">
+      <!-- TOP BAR -->
+      <header class="topbar" role="banner">
+        <div class="search-row">
+          <input class="search" placeholder="Search SKU..." aria-label="Search SKU" />
+          <select class="warehouse" aria-label="Select warehouse">
+            <option>All Warehouses</option>
+          </select>
+        </div>
+
+        <div class="top-actions" aria-hidden="true">
+          <div class="user-mini">
+            <div class="user-name">User</div>
+            <div class="user-role">Inventory Manager</div>
+            <div class="avatar-circle" title="User">U</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- STATS CARDS -->
+      <section class="panel" aria-labelledby="overviewHeading">
+        <div class="panel-header">
+          <h2 id="overviewHeading">Overview</h2>
+          <div class="panel-controls">
+            <input class="table-search" placeholder="Filter..." aria-label="Filter overview" />
+            <select class="per-page" aria-label="View">
+              <option>Last 30 days</option>
+              <option>Last 7 days</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
+          <div class="stat" style="min-width:180px;">
+            <div class="stat-title">Total Products in Stock</div>
+            <div class="stat-value" id="totalProducts">--</div>
+          </div>
+
+          <div class="stat" style="min-width:180px;">
+            <div class="stat-title">Low Stock / Out of Stock</div>
+            <div class="stat-value" id="lowStock">--</div>
+          </div>
+
+          <div class="stat" style="min-width:180px;">
+            <div class="stat-title">Pending Receipts</div>
+            <div class="stat-value" id="pendingReceipts">--</div>
+          </div>
+
+          <div class="stat" style="min-width:180px;">
+            <div class="stat-title">Pending Deliveries</div>
+            <div class="stat-value" id="pendingDeliveries">--</div>
+          </div>
+        </div>
+
+        <!-- Main chart / actions -->
+        <div style="margin-top:16px; display:flex; gap:16px; flex-wrap:wrap;">
+          <div class="panel" style="flex:1; min-width:320px;">
+            <h3 style="margin:0 0 8px 0;">Stock Overview (Last 30 Days)</h3>
+            <div class="chart-placeholder" style="height:220px; display:flex; align-items:center; justify-content:center; color:#8faecc; border-radius:8px; background: rgba(255,255,255,0.02);">
+              Chart Placeholder
+            </div>
+          </div>
+
+          <div style="min-width:220px; display:flex; flex-direction:column; gap:8px; align-items:stretch;">
+            <button type="button" class="btn" id="newReceipt">New Receipt</button>
+            <button type="button" class="btn" id="newDelivery">New Delivery</button>
+            <button type="button" class="btn" id="transferBtn">Transfer</button>
+            <button type="button" class="btn" id="exportCsv" style="background:var(--accent); color:#032c2a;">Export CSV</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- LOW STOCK SECTION -->
+      <section class="panel" style="margin-top:12px;">
+        <div class="panel-header">
+          <h2 style="margin:0;font-size:16px">Top Low-stock Items</h2>
+        </div>
+
+        <div style="margin-top:12px;">
+          <div class="reference" style="flex-direction:column; align-items:flex-start; gap:8px;">
+            <div style="color:var(--muted)">SKU — Item — Stock</div>
+            <div id="lowStockList" style="color:#dff2ff">
+              <div class="panel" style="padding:10px; display:flex; justify-content:space-between; gap:12px;">
+                <div>PRD-003 — Notebook A4</div>
+                <div>0</div>
+              </div>
+              <!-- more items can be appended here -->
+            </div>
+
+            <div class="no-data" id="noLowStock" style="color:#8faecc; display:none;">No low-stock items</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="hero.js"></script>
+</body>
+</html>

@@ -3,73 +3,141 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Settings - StockMaster</title>
-  <link rel="stylesheet" href="hero.css" />
+  <title>Settings — StockMaster</title>
+
+  <!-- theme (main) -->
+  <link rel="stylesheet" href="transfers.css" />
+  <!-- optional overrides -->
   <link rel="stylesheet" href="settings.css" />
 </head>
 <body>
-  <div class="layout">
-
-    <div class="sidebar">
-      <div class="logo-box">
-        <div class="logo">SM</div>
-        <div>
-          <h2>StockMaster</h2>
-          <small class="subtitle">Inventory Dashboard</small>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" role="complementary" aria-label="Main sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">SM</div>
+        <div class="brand-text">
+          <div class="title">StockMaster</div>
+          <div class="subtitle">Inventory Dashboard</div>
         </div>
       </div>
 
-      <div class="nav">
-        <a class="nav-item" href="hero.html">Dashboard</a>
-        <a class="nav-item" href="products.html">Products</a>
-        <a class="nav-item" href="receipts.html">Receipts</a>
-        <a class="nav-item" href="deliveries.html">Deliveries</a>
-        <a class="nav-item" href="transfers.html">Transfers</a>
-        <a class="nav-item" href="adjustments.html">Adjustments</a>
-        <a class="nav-item" href="move-history.html">Move History</a>
-        <a class="nav-item" href="settings.html">Settings</a>
-      </div>
-    </div>
+      <nav class="menu" role="navigation" aria-label="Primary">
+        <a class="menu-item" href="index.html">Dashboard</a>
+        <a class="menu-item" href="products.html">Products</a>
+        <a class="menu-item" href="receipts.html">Receipts</a>
+        <a class="menu-item" href="deliveries.html">Deliveries</a>
+        <a class="menu-item" href="transfers.html">Transfers</a>
+        <a class="menu-item" href="adjustments.html">Adjustments</a>
+        <a class="menu-item" href="move-history.html">Move History</a>
+        <a class="menu-item" href="settings.html">Settings</a>
+      </nav>
 
-    <div class="main">
-      <div class="top-bar">
-        <div>
-          <input type="text" placeholder="Search settings..." aria-label="Search settings">
-        </div>
-        <div class="user-box">
+      <div class="sidebar-footer">
+        <a class="pdf-link" href="/mnt/data/StockMaster.pdf">Open StockMaster.pdf</a>
+        <div class="user">
+          <div class="avatar" title="Admin">A</div>
           <div class="user-info">
-            <b>Admin</b><br>
-            <small>System</small>
-          </div>
-          <div class="user-icon">A</div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="title-row">
-          <h2>Settings</h2>
-          <a class="btn" href="hero.html">Back to Dashboard</a>
-        </div>
-
-        <div class="settings-cards">
-          <div class="card">
-            <div class="card-title">Warehouses</div>
-            <div class="card-value">3</div>
-            <p class="low-stock-header">Manage warehouse locations and capacities.</p>
-          </div>
-          <div class="card">
-            <div class="card-title">Users</div>
-            <div class="card-value">5</div>
-            <p class="low-stock-header">Manage user accounts and roles.</p>
-          </div>
-          <div class="card">
-            <div class="card-title">Preferences</div>
-            <div class="card-value">General</div>
-            <p class="low-stock-header">System preferences and integrations.</p>
+            <div class="name">Admin</div>
+            <div class="role">System</div>
           </div>
         </div>
       </div>
-    </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" role="main">
+      <!-- TOP BAR -->
+      <header class="topbar" role="banner">
+        <div class="search-row">
+          <input class="search" type="search" placeholder="Search settings..." aria-label="Search settings"/>
+        </div>
+
+        <div class="top-actions" aria-hidden="true">
+          <div class="user-mini">
+            <div class="user-name">Admin</div>
+            <div class="user-role">System</div>
+            <div class="avatar-circle" title="Admin">A</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE HEADER -->
+      <section class="page-header">
+        <h1>Settings</h1>
+        <div class="page-actions">
+          <a class="btn btn-secondary" href="index.html">Back to Dashboard</a>
+          <button type="button" class="btn" id="editSettings">Edit Settings</button>
+        </div>
+      </section>
+
+      <!-- SETTINGS PANEL -->
+      <section class="panel" aria-labelledby="settingsHeading">
+        <div class="panel-header">
+          <h2 id="settingsHeading">System Settings</h2>
+          <div class="panel-controls">
+            <input class="table-search" placeholder="Filter settings..." aria-label="Filter settings" />
+            <select class="per-page" aria-label="Items per page">
+              <option>10 / page</option>
+              <option>25 / page</option>
+              <option>50 / page</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="settings-cards" style="display:flex;gap:12px;flex-wrap:wrap;">
+          <div class="panel" style="flex:1;min-width:220px;max-width:320px;">
+            <div class="panel-header" style="align-items:flex-start;">
+              <h2 style="margin:0;font-size:16px;">Warehouses</h2>
+            </div>
+            <div style="margin-top:10px;">
+              <div class="stat-title">Locations</div>
+              <div class="stat-value" style="font-size:20px;margin-top:6px;">3</div>
+              <p style="color:#8faecc;margin-top:8px;">Manage warehouse locations and capacities.</p>
+            </div>
+          </div>
+
+          <div class="panel" style="flex:1;min-width:220px;max-width:320px;">
+            <div class="panel-header" style="align-items:flex-start;">
+              <h2 style="margin:0;font-size:16px;">Users</h2>
+            </div>
+            <div style="margin-top:10px;">
+              <div class="stat-title">Active users</div>
+              <div class="stat-value" style="font-size:20px;margin-top:6px;">5</div>
+              <p style="color:#8faecc;margin-top:8px;">Manage user accounts and roles.</p>
+            </div>
+          </div>
+
+          <div class="panel" style="flex:1;min-width:220px;max-width:320px;">
+            <div class="panel-header" style="align-items:flex-start;">
+              <h2 style="margin:0;font-size:16px;">Preferences</h2>
+            </div>
+            <div style="margin-top:10px;">
+              <div class="stat-title">General</div>
+              <div class="stat-value" style="font-size:20px;margin-top:6px;">System</div>
+              <p style="color:#8faecc;margin-top:8px;">System preferences and integrations.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
   </div>
+
+  <script>
+    // Mark active menu item based on file name
+    (function markActiveMenu() {
+      const path = location.pathname.split('/').pop() || 'settings.html';
+      document.querySelectorAll('.menu a').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        a.classList.toggle('active', href === path || (path === '' && href === 'index.html'));
+      });
+    })();
+
+    // tiny demo action
+    const editBtn = document.getElementById('editSettings');
+    if (editBtn) editBtn.addEventListener('click', () => {
+      alert('Open settings editor (implement modal or separate page).');
+    });
+  </script>
 </body>
 </html>

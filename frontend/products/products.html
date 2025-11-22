@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Sections</title>
-    <link rel="stylesheet" href="product.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Products — StockMaster</title>
+
+  <!-- main theme -->
+  <link rel="stylesheet" href="transfers.css" />
+  <!-- optional product overrides -->
+  <link rel="stylesheet" href="product.css" />
 </head>
 <body>
   <div class="app">
     <!-- SIDEBAR -->
-    <aside class="sidebar">
+    <aside class="sidebar" role="complementary" aria-label="Main sidebar">
       <div class="brand">
-        <div class="logo">SM</div>
+        <div class="logo" aria-hidden="true">SM</div>
         <div class="brand-text">
           <div class="title">StockMaster</div>
           <div class="subtitle">Inventory Dashboard</div>
         </div>
       </div>
 
-      <nav class="menu">
+      <nav class="menu" role="navigation" aria-label="Primary">
         <a class="menu-item" href="index.html">Dashboard</a>
         <a class="menu-item active" href="products.html">Products</a>
         <a class="menu-item" href="receipts.html">Receipts</a>
         <a class="menu-item" href="deliveries.html">Deliveries</a>
         <a class="menu-item" href="transfers.html">Transfers</a>
         <a class="menu-item" href="adjustments.html">Adjustments</a>
-        <a class="menu-item" href="moveHistory.html">Move History</a>
+        <a class="menu-item" href="move-history.html">Move History</a>
         <a class="menu-item" href="settings.html">Settings</a>
       </nav>
 
       <div class="sidebar-footer">
-        <a class="pdf-link" href="#">Open StockMaster.pdf</a>
+        <a class="pdf-link" href="/mnt/data/StockMaster.pdf">Open StockMaster.pdf</a>
         <div class="user">
-          <div class="avatar">U</div>
+          <div class="avatar" title="User">U</div>
           <div class="user-info">
             <div class="name">USER</div>
             <div class="role">Inventory Manager</div>
@@ -42,9 +46,9 @@
     </aside>
 
     <!-- MAIN -->
-    <main class="main">
+    <main class="main" role="main">
       <!-- TOP BAR -->
-      <header class="topbar">
+      <header class="topbar" role="banner">
         <div class="search-row">
           <input class="search" placeholder="Search SKU, product..." aria-label="Search products" />
           <select class="warehouse" aria-label="Select warehouse">
@@ -53,22 +57,22 @@
           </select>
         </div>
 
-        <div class="top-actions">
+        <div class="top-actions" aria-hidden="true">
           <div class="quick-stats">
             <div class="stat">
               <div class="stat-title">Total Products in Stock</div>
-              <div class="stat-value">--</div>
+              <div class="stat-value" id="totalProducts">--</div>
             </div>
             <div class="stat">
               <div class="stat-title">Low Stock / Out of Stock</div>
-              <div class="stat-value">--</div>
+              <div class="stat-value" id="lowStockCount">--</div>
             </div>
           </div>
 
           <div class="user-mini">
             <div class="user-name">User</div>
             <div class="user-role">Inventory Manager</div>
-            <div class="avatar-circle">U</div>
+            <div class="avatar-circle" title="User">U</div>
           </div>
         </div>
       </header>
@@ -77,28 +81,28 @@
       <section class="page-header">
         <h1>Products</h1>
         <div class="page-actions">
-          <a class="btn btn-secondary" href="hero.html">Back to Dashboard</a>
-          <button class="btn btn-secondary" id="importCsv">Import CSV</button>
-          <button class="btn" id="newProduct">New Product</button>
+          <a class="btn btn-secondary" href="index.html">Back to Dashboard</a>
+          <button type="button" class="btn btn-secondary" id="importCsv">Import CSV</button>
+          <button type="button" class="btn" id="newProduct">New Product</button>
         </div>
       </section>
 
       <!-- PRODUCTS TABLE -->
-      <section class="panel">
+      <section class="panel" aria-labelledby="productListHeading">
         <div class="panel-header">
-          <h2>Product List</h2>
+          <h2 id="productListHeading">Product List</h2>
           <div class="panel-controls">
             <input class="table-search" placeholder="Filter products..." aria-label="Filter products" />
             <select class="per-page" aria-label="Products per page">
-              <option>10 / page</option>
-              <option>25 / page</option>
-              <option>50 / page</option>
+              <option value="10">10 / page</option>
+              <option value="25">25 / page</option>
+              <option value="50">50 / page</option>
             </select>
           </div>
         </div>
 
         <div class="table-wrap">
-          <table class="products-table">
+          <table class="transfers-table products-table" aria-label="Products table">
             <thead>
               <tr>
                 <th>SKU</th>
@@ -111,8 +115,7 @@
               </tr>
             </thead>
             <tbody id="productsBody">
-              <!-- sample rows -->
-              <tr>
+              <tr data-stock="120" data-reorder="20">
                 <td>PRD-001</td>
                 <td>Plain T-Shirt</td>
                 <td>Apparel</td>
@@ -120,11 +123,12 @@
                 <td>20</td>
                 <td>₹249</td>
                 <td>
-                  <button class="tiny">Edit</button>
-                  <button class="tiny danger">Delete</button>
+                  <button class="tiny editBtn">Edit</button>
+                  <button class="tiny danger deleteBtn">Delete</button>
                 </td>
               </tr>
-              <tr>
+
+              <tr data-stock="45" data-reorder="10">
                 <td>PRD-002</td>
                 <td>Bluetooth Mouse</td>
                 <td>Accessories</td>
@@ -132,11 +136,12 @@
                 <td>10</td>
                 <td>₹799</td>
                 <td>
-                  <button class="tiny">Edit</button>
-                  <button class="tiny danger">Delete</button>
+                  <button class="tiny editBtn">Edit</button>
+                  <button class="tiny danger deleteBtn">Delete</button>
                 </td>
               </tr>
-              <tr>
+
+              <tr data-stock="0" data-reorder="10">
                 <td>PRD-003</td>
                 <td>Notebook A4</td>
                 <td>Stationery</td>
@@ -144,8 +149,8 @@
                 <td>10</td>
                 <td>₹59</td>
                 <td>
-                  <button class="tiny">Edit</button>
-                  <button class="tiny danger">Delete</button>
+                  <button class="tiny editBtn">Edit</button>
+                  <button class="tiny danger deleteBtn">Delete</button>
                 </td>
               </tr>
             </tbody>
@@ -154,49 +159,128 @@
 
         <!-- table footer -->
         <div class="table-footer">
-          <div class="left">Showing 3 of 3 products</div>
+          <div class="left" id="productInfo">Showing 3 of 3 products</div>
           <div class="right">
-            <button class="tiny">Prev</button>
-            <button class="tiny">Next</button>
+            <button class="tiny" id="prevProd">Prev</button>
+            <button class="tiny" id="nextProd">Next</button>
           </div>
         </div>
       </section>
 
-      <!-- REFERENCE PREVIEW (your uploaded screenshot) -->
+      <!-- REFERENCE PREVIEW -->
       <footer class="reference">
         <div>Reference screenshot (uploaded):</div>
         <img src="/mnt/data/Screenshot 2025-11-22 120531.png" alt="reference screenshot" />
       </footer>
     </main>
   </div>
+
   <script>
-    // Basic sidebar navigation behavior (for pages that use <a> links this will work; keep script on all pages)
-    document.querySelectorAll('.menu a, .menu-item').forEach(el => {
-      el.addEventListener('click', (e) => {
-        // allow normal anchor clicks; if you want JS navigation replace with window.location.href
-      });
-    });
+    (function () {
+      // elements
+      const newBtn = document.getElementById('newProduct');
+      const importBtn = document.getElementById('importCsv');
+      const tableSearch = document.querySelector('.table-search');
+      const tbody = document.getElementById('productsBody');
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      const perPageSelect = document.querySelector('.per-page');
+      const prevBtn = document.getElementById('prevProd');
+      const nextBtn = document.getElementById('nextProd');
+      const info = document.getElementById('productInfo');
 
-    // New Product and Import CSV demo actions
-    document.getElementById('newProduct').addEventListener('click', () => {
-      // in real app open a modal or navigate to add-product page
-      alert('Open New Product form (implement form or page).');
-    });
-    document.getElementById('importCsv').addEventListener('click', () => {
-      alert('Open CSV import dialog (you can implement file input here).');
-    });
+      // demo actions
+      if (newBtn) newBtn.addEventListener('click', () => alert('Open New Product form (implement modal or page).'));
+      if (importBtn) importBtn.addEventListener('click', () => alert('Open CSV import dialog.'));
 
-    // Small table filter (client-side)
-    const tableSearch = document.querySelector('.table-search');
-    tableSearch.addEventListener('input', (e) => {
-      const q = e.target.value.toLowerCase().trim();
-      document.querySelectorAll('#productsBody tr').forEach(row => {
-        const txt = row.innerText.toLowerCase();
-        row.style.display = txt.includes(q) ? '' : 'none';
+      // filter
+      if (tableSearch) {
+        tableSearch.addEventListener('input', (e) => {
+          const q = e.target.value.toLowerCase().trim();
+          rows.forEach(row => {
+            const txt = row.innerText.toLowerCase();
+            row.style.display = txt.includes(q) ? '' : 'none';
+          });
+          currentPage = 1;
+          renderPage();
+          computeStats();
+        });
+      }
+
+      // compute stats (total and low-stock)
+      function computeStats() {
+        const total = rows.length;
+        const low = rows.filter(r => {
+          const stock = Number(r.dataset.stock || r.children[3].textContent);
+          const reorder = Number(r.dataset.reorder || r.children[4].textContent);
+          return stock <= reorder;
+        }).length;
+        document.getElementById('totalProducts').textContent = total;
+        document.getElementById('lowStockCount').textContent = low;
+      }
+      computeStats();
+
+      // pagination
+      let currentPage = 1;
+      function getPerPage() {
+        const v = parseInt(perPageSelect?.value || '10', 10);
+        return Number.isFinite(v) && v > 0 ? v : 10;
+      }
+
+      function renderPage() {
+        const perPage = getPerPage();
+        const visible = rows.filter(r => r.style.display !== 'none');
+        const totalVisible = visible.length;
+        const totalPages = Math.max(1, Math.ceil(totalVisible / perPage));
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        rows.forEach(r => r.style.display = 'none');
+        const start = (currentPage - 1) * perPage;
+        const slice = visible.slice(start, start + perPage);
+        slice.forEach(r => r.style.display = '');
+
+        const showingFrom = totalVisible === 0 ? 0 : start + 1;
+        const showingTo = Math.min(start + slice.length, totalVisible);
+        info.textContent = `Showing ${showingFrom} - ${showingTo} of ${totalVisible} products`;
+
+        prevBtn.disabled = currentPage <= 1;
+        nextBtn.disabled = currentPage >= totalPages;
+      }
+
+      if (perPageSelect) perPageSelect.addEventListener('change', () => { currentPage = 1; renderPage(); });
+      if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(); }});
+      if (nextBtn) nextBtn.addEventListener('click', () => { currentPage++; renderPage(); });
+
+      renderPage();
+
+      // row actions (edit / delete)
+      tbody.addEventListener('click', (e) => {
+        const btn = e.target.closest('button');
+        if (!btn) return;
+        const row = btn.closest('tr');
+        const sku = row?.children[0]?.textContent;
+        if (btn.classList.contains('editBtn')) {
+          alert('Edit ' + sku);
+        } else if (btn.classList.contains('deleteBtn')) {
+          if (confirm('Delete product ' + sku + '?')) {
+            row.remove();
+            // refresh internal lists
+            const idx = rows.indexOf(row);
+            if (idx > -1) rows.splice(idx, 1);
+            computeStats();
+            renderPage();
+          }
+        }
       });
-    });
+
+      // mark active menu
+      (function markActiveMenu() {
+        const path = location.pathname.split('/').pop() || 'products.html';
+        document.querySelectorAll('.menu a').forEach(a => {
+          const href = a.getAttribute('href') || '';
+          a.classList.toggle('active', href === path || (path === '' && href === 'index.html'));
+        });
+      })();
+    })();
   </script>
-    </div>
-
 </body>
 </html>

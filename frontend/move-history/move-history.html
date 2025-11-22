@@ -1,218 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Move History — StockMaster</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Move History — StockMaster</title>
 
-    <!-- MAIN THEME CSS -->
-    <link rel="stylesheet" href="hero.css">
-
-    <!-- PAGE CSS -->
-    <link rel="stylesheet" href="move-history.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- main theme -->
+  <link rel="stylesheet" href="transfers.css" />
+  <!-- optional page overrides -->
+  <link rel="stylesheet" href="move-history.css" />
 </head>
-
 <body>
-<div class="layout">
-
+  <div class="app">
     <!-- SIDEBAR -->
-    <div class="sidebar">
-        <div class="logo-box">
-            <div class="logo">SM</div>
-            <div>
-                <h2>StockMaster</h2>
-                <small class="subtitle">Inventory Dashboard</small>
+    <aside class="sidebar" role="complementary" aria-label="Main sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">SM</div>
+        <div class="brand-text">
+          <div class="title">StockMaster</div>
+          <div class="subtitle">Inventory Dashboard</div>
+        </div>
+      </div>
+
+      <nav class="menu" role="navigation" aria-label="Primary">
+        <a class="menu-item" href="index.html">Dashboard</a>
+        <a class="menu-item" href="products.html">Products</a>
+        <a class="menu-item" href="receipts.html">Receipts</a>
+        <a class="menu-item" href="deliveries.html">Deliveries</a>
+        <a class="menu-item" href="transfers.html">Transfers</a>
+        <a class="menu-item" href="adjustments.html">Adjustments</a>
+        <a class="menu-item active" href="move-history.html">Move History</a>
+        <a class="menu-item" href="settings.html">Settings</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a class="pdf-link" href="/mnt/data/StockMaster.pdf">Open StockMaster.pdf</a>
+        <div class="user">
+          <div class="avatar" title="User">U</div>
+          <div class="user-info">
+            <div class="name">User</div>
+            <div class="role">Inventory Manager</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" role="main">
+      <!-- TOP BAR -->
+      <header class="topbar" role="banner">
+        <div class="search-row">
+          <input class="search" placeholder="Search SKU, Doc, From-To" aria-label="Search movements" />
+          <select class="warehouse" aria-label="Select warehouse">
+            <option>All Warehouses</option>
+          </select>
+        </div>
+
+        <div class="top-actions" aria-hidden="true">
+          <div class="user-mini">
+            <div class="user-name">User</div>
+            <div class="user-role">Inventory Manager</div>
+            <div class="avatar-circle" title="User">U</div>
+          </div>
+        </div>
+      </header>
+
+      <!-- PAGE HEADER -->
+      <section class="page-header">
+        <h1>Move History</h1>
+        <div class="page-actions">
+          <a class="btn btn-secondary" href="index.html">Back to Dashboard</a>
+        </div>
+      </section>
+
+      <!-- FILTERS PANEL -->
+      <section class="panel" aria-labelledby="filterHeading">
+        <div class="panel-header">
+          <h2 id="filterHeading">Filter History</h2>
+          <div class="panel-controls">
+            <input class="table-search" placeholder="Search movement..." aria-label="Search movement" />
+            <select class="per-page" aria-label="Quick filter">
+              <option>Type — All</option>
+              <option>Receipt</option>
+              <option>Delivery</option>
+              <option>Internal Transfer</option>
+              <option>Adjustment</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+          <select id="typeFilter" aria-label="Filter by type">
+            <option value="">Type — All</option>
+            <option value="receipt">Receipt</option>
+            <option value="delivery">Delivery</option>
+            <option value="transfer">Internal Transfer</option>
+            <option value="adjustment">Adjustment</option>
+          </select>
+
+          <select id="statusFilter" aria-label="Filter by status">
+            <option value="">Status — All</option>
+            <option value="done">Done</option>
+            <option value="cancel">Cancelled</option>
+          </select>
+
+          <input type="date" id="startDate" aria-label="Start date" />
+          <input type="date" id="endDate" aria-label="End date" />
+
+          <button class="btn btn-secondary" id="applyHistoryFilters">Filter</button>
+        </div>
+      </section>
+
+      <!-- RECENT MOVEMENTS (timeline) -->
+      <section class="panel" aria-labelledby="recentHeading" style="margin-top:12px;">
+        <div class="panel-header">
+          <h2 id="recentHeading">Recent Movements</h2>
+        </div>
+
+        <div class="table-wrap" style="margin-top:12px;">
+          <div id="timelineList" style="display:flex;flex-direction:column;gap:12px;">
+            <!-- items rendered statically for demo -->
+            <div class="panel" style="padding:12px;display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:6px;"></div>
+              <div>
+                <div style="color:var(--muted);font-size:13px;">2025-11-21</div>
+                <div style="font-weight:700;">Receipt #R1012 — Done</div>
+                <div style="color:#8faecc;">Vendor Supplies → Main Warehouse | 120 units</div>
+              </div>
             </div>
-        </div>
 
-        <div class="nav">
-            <a class="nav-item" href="hero.html">Dashboard</a>
-            <a class="nav-item" href="products.html">Products</a>
-            <a class="nav-item" href="receipts.html">Receipts</a>
-            <a class="nav-item" href="deliveries.html">Deliveries</a>
-            <a class="nav-item" href="transfers.html">Transfers</a>
-            <a class="nav-item" href="adjustments.html">Adjustments</a>
-            <a class="nav-item active" href="move-history.html">Move History</a>
-            <a class="nav-item" href="settings.html">Settings</a>
-        </div>
-    </div>
-
-
-    <!-- MAIN CONTENT -->
-    <main class="main">
-
-        <!-- TOP BAR -->
-        <div class="top-bar">
-            <div>
-                <input type="text" class="search" placeholder="Search SKU, Doc, From-To" aria-label="Search movements">
-                <select class="warehouse" aria-label="Select warehouse">
-                    <option>All Warehouses</option>
-                </select>
+            <div class="panel" style="padding:12px;display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--ready);margin-top:6px;"></div>
+              <div>
+                <div style="color:var(--muted);font-size:13px;">2025-11-20</div>
+                <div style="font-weight:700;">Internal Transfer #T301 — Completed</div>
+                <div style="color:#8faecc;">Main Warehouse → Production Rack | 50 units</div>
+              </div>
             </div>
 
-            <div class="user-box">
-                <div class="user-info">
-                    <b>User</b><br>
-                    <small>Inventory Manager</small>
-                </div>
-                <div class="user-icon">U</div>
+            <div class="panel" style="padding:12px;display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--success);margin-top:6px;"></div>
+              <div>
+                <div style="color:var(--muted);font-size:13px;">2025-11-19</div>
+                <div style="font-weight:700;">Delivery #D1021 — Completed</div>
+                <div style="color:#8faecc;">Main Warehouse → Customer | 12 units</div>
+              </div>
             </div>
-        </div>
 
-
-        <!-- PAGE HEADER -->
-        <div class="page-title-row">
-            <h1>Move History</h1>
-        </div>
-
-
-        <!-- FILTERS -->
-        <div class="big-card">
-            <h2>Filter History</h2>
-
-            <div class="filter-row">
-                <select aria-label="Filter by type">
-                    <option>Type — All</option>
-                    <option>Receipt</option>
-                    <option>Delivery</option>
-                    <option>Internal Transfer</option>
-                    <option>Adjustment</option>
-                </select>
-                <select aria-label="Filter by status">
-                    <option>Status — All</option>
-                    <option>Done</option>
-                    <option>Cancelled</option>
-                </select>
-
-                <input type="date" aria-label="Start date">
-                <input type="date" aria-label="End date">
-
-                <input type="text" class="search" placeholder="Search movement..." aria-label="Search movement">
-
-                <button class="btn-primary small">Filter</button>
+            <div class="panel" style="padding:12px;display:flex;gap:12px;align-items:flex-start;">
+              <div style="width:10px;height:10px;border-radius:50%;background:var(--danger);margin-top:6px;"></div>
+              <div>
+                <div style="color:var(--muted);font-size:13px;">2025-11-16</div>
+                <div style="font-weight:700;">Adjustment #A117 — Negative</div>
+                <div style="color:#8faecc;">Copper Sheets — Damaged | -5</div>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ALL MOVEMENTS TABLE -->
+      <section class="panel" style="margin-top:12px;">
+        <div class="panel-header">
+          <h2 style="margin:0;font-size:16px">All Movements</h2>
+          <div class="panel-controls">
+            <input class="table-search" placeholder="Filter table..." aria-label="Filter table" />
+            <select class="per-page" aria-label="Rows per page">
+              <option value="10">10 / page</option>
+              <option value="25">25 / page</option>
+            </select>
+          </div>
         </div>
 
-
-        <!-- TIMELINE: RECENT MOVEMENTS -->
-        <div class="big-card">
-            <h2>Recent Movements</h2>
-
-            <div class="timeline">
-
-                <div class="timeline-item">
-                    <div class="dot blue"></div>
-                    <div>
-                        <p class="t-date">Nov 21, 2025</p>
-                        <p class="t-title">Receipt #R1012 — Done</p>
-                        <p class="t-sub">Vendor Supplies → Main Warehouse | 120 units</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="dot purple"></div>
-                    <div>
-                        <p class="t-date">Nov 20, 2025</p>
-                        <p class="t-title">Internal Transfer #T301 — Completed</p>
-                        <p class="t-sub">Main Warehouse → Production Rack | 50 units</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="dot green"></div>
-                    <div>
-                        <p class="t-date">Nov 19, 2025</p>
-                        <p class="t-title">Delivery #D1021 — Completed</p>
-                        <p class="t-sub">Main Warehouse → Customer | 12 units</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="dot red"></div>
-                    <div>
-                        <p class="t-date">Nov 16, 2025</p>
-                        <p class="t-title">Adjustment #A117 — Negative</p>
-                        <p class="t-sub">Copper Sheets — Damaged | -5</p>
-                    </div>
-                </div>
-
-            </div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table class="transfers-table" aria-label="Move history table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="movesBody">
+              <tr data-type="receipt" data-status="done" data-date="2025-11-21">
+                <td>M3240</td><td>Receipt</td><td>Steel Rods</td><td>120</td><td>Vendor</td><td>Main WH</td>
+                <td><span class="badge done">Done</span></td><td>2025-11-21</td><td><button class="tiny">View</button></td>
+              </tr>
+              <tr data-type="transfer" data-status="done" data-date="2025-11-20">
+                <td>M3239</td><td>Transfer</td><td>Steel Rods</td><td>50</td><td>Main WH</td><td>Rack B</td>
+                <td><span class="badge ready">Completed</span></td><td>2025-11-20</td><td><button class="tiny">View</button></td>
+              </tr>
+              <tr data-type="delivery" data-status="done" data-date="2025-11-19">
+                <td>M3238</td><td>Delivery</td><td>Bolt Pack</td><td>12</td><td>Main WH</td><td>Customer</td>
+                <td><span class="badge done">Done</span></td><td>2025-11-19</td><td><button class="tiny">View</button></td>
+              </tr>
+              <tr data-type="adjustment" data-status="negative" data-date="2025-11-16">
+                <td>M3237</td><td>Adjustment</td><td>Copper Sheet</td><td>-5</td><td>Inventory</td><td>Inventory</td>
+                <td><span class="badge danger">Negative</span></td><td>2025-11-16</td><td><button class="tiny">View</button></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-
-        <!-- TABLE: ALL MOVEMENTS -->
-        <div class="big-card">
-            <h2>All Movements</h2>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Type</th>
-                        <th>Product</th>
-                        <th>Qty</th>
-                        <th>From</th>
-                        <th>To</th>
-                        <th>Status</th>
-                        <th>Date</th>
-                        <th class="text-right">Action</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>M3240</td>
-                        <td>Receipt</td>
-                        <td>Steel Rods</td>
-                        <td>120</td>
-                        <td>Vendor</td>
-                        <td>Main WH</td>
-                        <td><span class="pill green">Done</span></td>
-                        <td>Nov 21, 2025</td>
-                        <td class="text-right"><button class="btn-ghost">View</button></td>
-                    </tr>
-
-                    <tr>
-                        <td>M3239</td>
-                        <td>Transfer</td>
-                        <td>Steel Rods</td>
-                        <td>50</td>
-                        <td>Main WH</td>
-                        <td>Rack B</td>
-                        <td><span class="pill purple">Completed</span></td>
-                        <td>Nov 20, 2025</td>
-                        <td class="text-right"><button class="btn-ghost">View</button></td>
-                    </tr>
-
-                    <tr>
-                        <td>M3238</td>
-                        <td>Delivery</td>
-                        <td>Bolt Pack</td>
-                        <td>12</td>
-                        <td>Main WH</td>
-                        <td>Customer</td>
-                        <td><span class="pill blue">Done</span></td>
-                        <td>Nov 19, 2025</td>
-                        <td class="text-right"><button class="btn-ghost">View</button></td>
-                    </tr>
-
-                    <tr>
-                        <td>M3237</td>
-                        <td>Adjustment</td>
-                        <td>Copper Sheet</td>
-                        <td>-5</td>
-                        <td>Inventory</td>
-                        <td>Inventory</td>
-                        <td><span class="pill red">Negative</span></td>
-                        <td>Nov 16, 2025</td>
-                        <td class="text-right"><button class="btn-ghost">View</button></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="table-footer" style="margin-top:12px;">
+          <div class="left" id="movesInfo">Showing 4 of 4 movements</div>
+          <div class="right">
+            <button class="tiny" id="prevMoves">Prev</button>
+            <button class="tiny" id="nextMoves">Next</button>
+          </div>
         </div>
-
+      </section>
     </main>
-</div>
+  </div>
+
+  <script>
+    (function () {
+      // elements
+      const rows = Array.from(document.querySelectorAll('#movesBody tr'));
+      const tableSearch = document.querySelector('.table-search');
+      const perPageSelect = document.querySelector('.per-page');
+      const prevBtn = document.getElementById('prevMoves');
+      const nextBtn = document.getElementById('nextMoves');
+      const info = document.getElementById('movesInfo');
+      const typeFilter = document.getElementById('typeFilter');
+      const statusFilter = document.getElementById('statusFilter');
+      const startDate = document.getElementById('startDate');
+      const endDate = document.getElementById('endDate');
+      const applyBtn = document.getElementById('applyHistoryFilters');
+      let currentPage = 1;
+
+      // quick table search
+      tableSearch?.addEventListener('input', (e) => {
+        const q = e.target.value.toLowerCase().trim();
+        rows.forEach(r => {
+          const txt = r.innerText.toLowerCase();
+          r.style.display = txt.includes(q) ? '' : 'none';
+        });
+        currentPage = 1; renderPage();
+      });
+
+      // apply filters
+      applyBtn?.addEventListener('click', () => {
+        const type = (typeFilter?.value || '').toLowerCase();
+        const status = (statusFilter?.value || '').toLowerCase();
+        rows.forEach(r => {
+          let show = true;
+          if (type) show = (r.dataset.type === type);
+          if (show && status) show = (r.dataset.status === status);
+          if (show && startDate?.value) show = new Date(r.dataset.date) >= new Date(startDate.value);
+          if (show && endDate?.value) show = new Date(r.dataset.date) <= new Date(endDate.value);
+          r.style.display = show ? '' : 'none';
+        });
+        currentPage = 1; renderPage();
+      });
+
+      // pagination
+      function getPerPage() { return parseInt(perPageSelect?.value || '10', 10) || 10; }
+      function renderPage() {
+        const perPage = getPerPage();
+        const visible = rows.filter(r => r.style.display !== 'none');
+        const total = visible.length;
+        const pages = Math.max(1, Math.ceil(total / perPage));
+        if (currentPage > pages) currentPage = pages;
+
+        rows.forEach(r => r.style.display = 'none');
+        const start = (currentPage - 1) * perPage;
+        const slice = visible.slice(start, start + perPage);
+        slice.forEach(r => r.style.display = '');
+
+        const from = total === 0 ? 0 : start + 1;
+        const to = Math.min(start + slice.length, total);
+        info.textContent = `Showing ${from} - ${to} of ${total} movements`;
+
+        prevBtn.disabled = currentPage <= 1;
+        nextBtn.disabled = currentPage >= pages;
+      }
+
+      prevBtn?.addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderPage(); }});
+      nextBtn?.addEventListener('click', () => { currentPage++; renderPage(); });
+
+      // initial render
+      renderPage();
+
+      // mark active nav item
+      (function markActiveMenu() {
+        const path = location.pathname.split('/').pop() || 'move-history.html';
+        document.querySelectorAll('.menu a').forEach(a => {
+          const href = a.getAttribute('href') || '';
+          a.classList.toggle('active', href === path || (path === '' && href === 'index.html'));
+        });
+      })();
+    })();
+  </script>
 </body>
 </html>

@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Adjustments — StockMaster</title>
+  <title>Deliveries — StockMaster</title>
 
-  <!-- main theme -->
+  <!-- shared theme -->
   <link rel="stylesheet" href="transfers.css" />
-  <!-- page overrides -->
-  <link rel="stylesheet" href="adjustments.css" />
+  <!-- optional page overrides -->
+  <link rel="stylesheet" href="deliveries.css" />
 </head>
 <body>
   <div class="app">
@@ -26,9 +26,9 @@
         <a class="menu-item" href="index.html">Dashboard</a>
         <a class="menu-item" href="products.html">Products</a>
         <a class="menu-item" href="receipts.html">Receipts</a>
-        <a class="menu-item" href="deliveries.html">Deliveries</a>
+        <a class="menu-item active" href="deliveries.html">Deliveries</a>
         <a class="menu-item" href="transfers.html">Transfers</a>
-        <a class="menu-item active" href="adjustments.html">Adjustments</a>
+        <a class="menu-item" href="adjustments.html">Adjustments</a>
         <a class="menu-item" href="move-history.html">Move History</a>
         <a class="menu-item" href="settings.html">Settings</a>
       </nav>
@@ -50,7 +50,7 @@
       <!-- TOP BAR -->
       <header class="topbar" role="banner">
         <div class="search-row">
-          <input class="search" placeholder="Search product / adjustment..." aria-label="Search adjustments" />
+          <input class="search" placeholder="Search deliveries, customer, doc..." aria-label="Search deliveries" />
           <select class="warehouse" aria-label="Select warehouse">
             <option>All Warehouses</option>
           </select>
@@ -60,49 +60,38 @@
           <div class="user-mini">
             <div class="user-name">User</div>
             <div class="user-role">Inventory Manager</div>
-            <div class="avatar-circle" title="User">U</div>
+            <div class="avatar-circle">U</div>
           </div>
         </div>
       </header>
 
       <!-- PAGE HEADER -->
       <section class="page-header">
-        <h1>Inventory Adjustments</h1>
+        <h1>Deliveries</h1>
         <div class="page-actions">
           <a class="btn btn-secondary" href="index.html">Back to Dashboard</a>
-          <button class="btn" id="newAdjustment">+ New Adjustment</button>
+          <button class="btn" id="newDelivery">+ New Delivery</button>
         </div>
       </section>
 
-      <!-- KPI CARDS -->
+      <!-- STATS PANEL -->
       <section class="panel" style="margin-top:12px;">
         <div class="panel-header">
           <h2 style="margin:0;font-size:16px">Summary</h2>
         </div>
 
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
-          <div class="stat" style="min-width:160px;">
-            <div class="stat-title">Pending Adjustments</div>
-            <div class="stat-value" id="pendingVal">4</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px">Awaiting approval</div>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
+          <div class="stat" style="min-width:140px;">
+            <div class="stat-title">Pending Deliveries</div>
+            <div class="stat-value" id="pendingDeliveriesVal">3</div>
           </div>
-
-          <div class="stat" style="min-width:160px;">
+          <div class="stat" style="min-width:140px;">
             <div class="stat-title">Completed</div>
-            <div class="stat-value" id="completedVal">18</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px">Stock synced</div>
+            <div class="stat-value" id="completedDeliveriesVal">12</div>
           </div>
-
-          <div class="stat" style="min-width:160px;">
-            <div class="stat-title">Negative Adjustments</div>
-            <div class="stat-value" id="negativeVal">7</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px">Damaged / Missing</div>
-          </div>
-
-          <div class="stat" style="min-width:160px;">
-            <div class="stat-title">Positive Adjustments</div>
-            <div class="stat-value" id="positiveVal">11</div>
-            <div style="font-size:12px;color:var(--muted);margin-top:6px">Excess / Found</div>
+          <div class="stat" style="min-width:140px;">
+            <div class="stat-title">Cancelled</div>
+            <div class="stat-value" id="cancelledDeliveriesVal">1</div>
           </div>
         </div>
       </section>
@@ -110,11 +99,11 @@
       <!-- FILTERS -->
       <section class="panel" style="margin-top:12px;">
         <div class="panel-header">
-          <h2 style="margin:0;font-size:16px">Filter Adjustments</h2>
+          <h2 style="margin:0;font-size:16px">Filter Deliveries</h2>
           <div class="panel-controls">
-            <input class="table-search" placeholder="Search adjustment..." aria-label="Search adjustments" />
+            <input class="table-search" placeholder="Search delivery..." aria-label="Search delivery" />
             <select class="per-page" aria-label="Quick filter">
-              <option>All Products</option>
+              <option>All Customers</option>
             </select>
           </div>
         </div>
@@ -122,13 +111,17 @@
         <div style="display:flex;gap:10px;align-items:center;margin-top:12px;flex-wrap:wrap;">
           <select id="statusFilter" aria-label="Filter by status">
             <option value="">Status — All</option>
-            <option value="pending">Pending</option>
-            <option value="approved">Approved</option>
-            <option value="rejected">Rejected</option>
+            <option value="draft">Draft</option>
+            <option value="waiting">Waiting</option>
+            <option value="ready">Ready</option>
+            <option value="done">Done</option>
+            <option value="cancel">Cancelled</option>
           </select>
 
-          <select id="productFilter" aria-label="Filter by product">
-            <option value="">All Products</option>
+          <select id="customerFilter" aria-label="Filter by customer">
+            <option value="">All Customers</option>
+            <option>Acme Ltd</option>
+            <option>Bharat Traders</option>
           </select>
 
           <input type="date" id="startDate" aria-label="Start date" />
@@ -138,48 +131,10 @@
         </div>
       </section>
 
-      <!-- RECENT ADJUSTMENTS (timeline) -->
+      <!-- DELIVERIES TABLE -->
       <section class="panel" style="margin-top:12px;">
         <div class="panel-header">
-          <h2 style="margin:0;font-size:16px">Recent Adjustments</h2>
-        </div>
-
-        <div class="table-wrap" style="margin-top:12px;">
-          <div id="timelineList" style="display:flex;flex-direction:column;gap:12px;">
-            <div class="panel" style="padding:10px;display:flex;gap:12px;align-items:flex-start;">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);margin-top:6px"></div>
-              <div>
-                <div style="color:var(--muted);font-size:13px">2025-11-21</div>
-                <div style="font-weight:700">Adjustment #A119 — Pending</div>
-                <div style="color:#8faecc">Product: Steel Rods — Difference: -3</div>
-              </div>
-            </div>
-
-            <div class="panel" style="padding:10px;display:flex;gap:12px;align-items:flex-start;">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--success);margin-top:6px"></div>
-              <div>
-                <div style="color:var(--muted);font-size:13px">2025-11-19</div>
-                <div style="font-weight:700">Adjustment #A118 — Approved</div>
-                <div style="color:#8faecc">Product: Bolts — Difference: +12</div>
-              </div>
-            </div>
-
-            <div class="panel" style="padding:10px;display:flex;gap:12px;align-items:flex-start;">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--danger);margin-top:6px"></div>
-              <div>
-                <div style="color:var(--muted);font-size:13px">2025-11-16</div>
-                <div style="font-weight:700">Adjustment #A117 — Rejected</div>
-                <div style="color:#8faecc">Product: Copper Sheets — Difference: -5</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TABLE: All Adjustments -->
-      <section class="panel" style="margin-top:12px;">
-        <div class="panel-header">
-          <h2 style="margin:0;font-size:16px">All Adjustments</h2>
+          <h2 style="margin:0;font-size:16px">All Deliveries</h2>
           <div class="panel-controls">
             <input class="table-search" placeholder="Filter table..." aria-label="Filter table" />
             <select class="per-page" aria-label="Rows per page">
@@ -190,51 +145,35 @@
         </div>
 
         <div class="table-wrap" style="margin-top:12px;">
-          <table class="transfers-table" aria-label="Adjustments table">
+          <table class="transfers-table deliveries-table" aria-label="Deliveries table">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>Product</th>
-                <th>Old Qty</th>
-                <th>New Qty</th>
-                <th>Difference</th>
+                <th>Delivery No</th>
+                <th>Customer</th>
+                <th>Items</th>
                 <th>Status</th>
                 <th>Date</th>
-                <th>Action</th>
+                <th>Actions</th>
               </tr>
             </thead>
-
-            <tbody id="adjustmentsBody">
-              <tr data-status="pending" data-date="2025-11-21">
-                <td>A119</td>
-                <td>Steel Rods</td>
-                <td>150</td>
-                <td>147</td>
-                <td><span class="badge danger">-3</span></td>
-                <td><span class="badge pending">Pending</span></td>
-                <td>2025-11-21</td>
-                <td><button class="tiny viewBtn">View</button></td>
+            <tbody id="deliveriesBody">
+              <tr data-status="ready" data-date="2025-11-20">
+                <td>D1023</td>
+                <td>Acme Ltd</td>
+                <td>24</td>
+                <td><span class="badge ready">Ready</span></td>
+                <td>2025-11-20</td>
+                <td>
+                  <button class="tiny viewBtn">View</button>
+                  <button class="tiny danger">Cancel</button>
+                </td>
               </tr>
-
-              <tr data-status="approved" data-date="2025-11-19">
-                <td>A118</td>
-                <td>Bolts</td>
-                <td>300</td>
-                <td>312</td>
-                <td><span class="badge done">+12</span></td>
-                <td><span class="badge done">Approved</span></td>
-                <td>2025-11-19</td>
-                <td><button class="tiny viewBtn">View</button></td>
-              </tr>
-
-              <tr data-status="rejected" data-date="2025-11-16">
-                <td>A117</td>
-                <td>Copper Sheets</td>
-                <td>80</td>
-                <td>75</td>
-                <td><span class="badge danger">-5</span></td>
-                <td><span class="badge danger">Rejected</span></td>
-                <td>2025-11-16</td>
+              <tr data-status="done" data-date="2025-11-18">
+                <td>D1021</td>
+                <td>Bharat Traders</td>
+                <td>12</td>
+                <td><span class="badge done">Completed</span></td>
+                <td>2025-11-18</td>
                 <td><button class="tiny viewBtn">View</button></td>
               </tr>
             </tbody>
@@ -242,10 +181,10 @@
         </div>
 
         <div class="table-footer" style="margin-top:12px;">
-          <div class="left" id="adjustInfo">Showing 3 of 3 adjustments</div>
+          <div class="left" id="deliveriesInfo">Showing 2 of 2 deliveries</div>
           <div class="right">
-            <button class="tiny" id="prevAdj">Prev</button>
-            <button class="tiny" id="nextAdj">Next</button>
+            <button class="tiny" id="prevDel">Prev</button>
+            <button class="tiny" id="nextDel">Next</button>
           </div>
         </div>
       </section>
@@ -254,24 +193,21 @@
 
   <script>
     (function () {
-      // elements & state
-      const body = document.getElementById('adjustmentsBody');
-      const rows = Array.from(body.querySelectorAll('tr'));
+      const deliveriesBody = document.getElementById('deliveriesBody');
+      const rows = Array.from(deliveriesBody.querySelectorAll('tr'));
       const tableSearchInputs = document.querySelectorAll('.table-search');
       const statusFilter = document.getElementById('statusFilter');
       const applyFilters = document.getElementById('applyFilters');
       const perPageSelect = document.querySelector('.per-page');
-      const prevBtn = document.getElementById('prevAdj');
-      const nextBtn = document.getElementById('nextAdj');
-      const info = document.getElementById('adjustInfo');
+      const prevBtn = document.getElementById('prevDel');
+      const nextBtn = document.getElementById('nextDel');
+      const info = document.getElementById('deliveriesInfo');
       let currentPage = 1;
 
-      // demo create new adjustment action
-      document.getElementById('newAdjustment')?.addEventListener('click', () => {
-        alert('Open New Adjustment form (demo).');
-      });
+      // demo actions
+      document.getElementById('newDelivery')?.addEventListener('click', () => alert('Open New Delivery form (demo).'));
 
-      // quick table search (applies to every .table-search on page)
+      // quick table search (applies to all table-search inputs)
       tableSearchInputs.forEach(inp => inp.addEventListener('input', (e) => {
         const q = e.target.value.toLowerCase().trim();
         rows.forEach(r => {
@@ -296,7 +232,7 @@
         currentPage = 1; renderPage();
       });
 
-      // pagination helpers
+      // pagination
       function getPerPage() { return parseInt(perPageSelect?.value || '10', 10) || 10; }
       function renderPage() {
         const perPage = getPerPage();
@@ -312,7 +248,7 @@
 
         const from = total === 0 ? 0 : start + 1;
         const to = Math.min(start + slice.length, total);
-        info.textContent = `Showing ${from} - ${to} of ${total} adjustments`;
+        info.textContent = `Showing ${from} - ${to} of ${total} deliveries`;
 
         prevBtn.disabled = currentPage <= 1;
         nextBtn.disabled = currentPage >= pages;
@@ -323,20 +259,29 @@
 
       renderPage();
 
-      // view action
-      body.addEventListener('click', (e) => {
+      // actions: view / cancel
+      deliveriesBody.addEventListener('click', (e) => {
         const btn = e.target.closest('button');
         if (!btn) return;
         const row = btn.closest('tr');
         const id = row?.children[0]?.textContent;
         if (btn.classList.contains('viewBtn')) {
-          alert('View adjustment ' + id);
+          alert('View delivery ' + id);
+        } else if (btn.classList.contains('danger')) {
+          if (confirm('Cancel delivery ' + id + '?')) {
+            // demo: mark cancelled visually
+            row.querySelector('.badge')?.classList.remove('ready','done');
+            row.querySelector('.badge')?.classList.add('pending');
+            row.querySelector('.badge')?.textContent = 'Cancelled';
+            row.dataset.status = 'cancel';
+            renderPage();
+          }
         }
       });
 
-      // mark active menu item
+      // mark active menu item based on filename
       (function markActiveMenu() {
-        const path = location.pathname.split('/').pop() || 'adjustments.html';
+        const path = location.pathname.split('/').pop() || 'deliveries.html';
         document.querySelectorAll('.menu a').forEach(a => {
           const href = a.getAttribute('href') || '';
           a.classList.toggle('active', href === path || (path === '' && href === 'index.html'));

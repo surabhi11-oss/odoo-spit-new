@@ -1,158 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Settings — StockMaster</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Settings — StockMaster</title>
 
-    <!-- MAIN THEME CSS -->
-    <link rel="stylesheet" href="setting.css">
-
-    <!-- PAGE SPECIFIC -->
-    <link rel="stylesheet" href="settings.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- theme -->
+  <link rel="stylesheet" href="transfers.css" />
+  <!-- optional page overrides -->
+  <link rel="stylesheet" href="settings.css" />
 </head>
-
 <body>
-<div class="layout">
-
+  <div class="app">
     <!-- SIDEBAR -->
-    <aside class="sidebar">
-        <div class="logo">
-            <div class="logo-circle">SM</div>
-            <h2>StockMaster</h2>
-            <p>Inventory Dashboard</p>
+    <aside class="sidebar" role="complementary" aria-label="Main sidebar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">SM</div>
+        <div class="brand-text">
+          <div class="title">StockMaster</div>
+          <div class="subtitle">Inventory Dashboard</div>
         </div>
+      </div>
 
-        <nav>
-            <a href="index.html">Dashboard</a>
-            <a href="products.html">Products</a>
-            <a href="receipts.html">Receipts</a>
-            <a href="deliveries.html">Deliveries</a>
-            <a href="transfers.html">Transfers</a>
-            <a href="adjustments.html">Adjustments</a>
-            <a href="moveHistory.html">Move History</a>
-            <a class="active" href="settings.html">Settings</a>
-        </nav>
+      <nav class="menu" role="navigation" aria-label="Primary">
+        <a class="menu-item" href="index.html">Dashboard</a>
+        <a class="menu-item" href="products.html">Products</a>
+        <a class="menu-item" href="receipts.html">Receipts</a>
+        <a class="menu-item" href="deliveries.html">Deliveries</a>
+        <a class="menu-item" href="transfers.html">Transfers</a>
+        <a class="menu-item" href="adjustments.html">Adjustments</a>
+        <a class="menu-item" href="move-history.html">Move History</a>
+        <a class="menu-item active" href="settings.html">Settings</a>
+      </nav>
 
-        <div class="user-footer">
-            <div class="user-circle">U</div>
-            <div>
-                <h4>User</h4>
-                <p>Inventory Manager</p>
-            </div>
+      <div class="sidebar-footer">
+        <a class="pdf-link" href="/mnt/data/StockMaster.pdf">Open StockMaster.pdf</a>
+        <div class="user">
+          <div class="avatar" title="User">U</div>
+          <div class="user-info">
+            <div class="name">User</div>
+            <div class="role">Inventory Manager</div>
+          </div>
         </div>
+      </div>
     </aside>
 
-
-    <!-- MAIN CONTENT -->
-    <main class="main">
-
-        <!-- TOP BAR -->
-        <div class="topbar">
-            <input type="text" class="search" placeholder="Search Settings...">
-            
-            <div class="profile">
-                <div class="profile-icon">U</div>
-                <div>
-                    <h4>User</h4>
-                    <p>Inventory Manager</p>
-                </div>
-            </div>
+    <!-- MAIN -->
+    <main class="main" role="main">
+      <!-- TOP BAR -->
+      <header class="topbar" role="banner">
+        <div class="search-row">
+          <input class="search" type="search" placeholder="Search settings..." aria-label="Search settings" />
         </div>
 
+        <div class="top-actions" aria-hidden="true">
+          <div class="user-mini">
+            <div class="user-name">User</div>
+            <div class="user-role">Inventory Manager</div>
+            <div class="avatar-circle" title="User">U</div>
+          </div>
+        </div>
+      </header>
 
-        <!-- PAGE HEADER -->
-        <div class="page-title-row">
-            <h1>Settings</h1>
+      <!-- PAGE HEADER -->
+      <section class="page-header">
+        <h1>Settings</h1>
+        <div class="page-actions">
+          <a class="btn btn-secondary" href="index.html">Back to Dashboard</a>
+          <button type="button" class="btn" id="saveAll">Save All</button>
+        </div>
+      </section>
+
+      <!-- SETTINGS CONTENT -->
+      <section class="panel" aria-labelledby="settingsHeading">
+        <div class="panel-header">
+          <h2 id="settingsHeading">System Settings</h2>
+          <div class="panel-controls">
+            <input class="table-search" placeholder="Filter sections..." aria-label="Filter settings" />
+            <select class="per-page" aria-label="Display">
+              <option>Compact</option>
+              <option>Comfortable</option>
+            </select>
+          </div>
         </div>
 
-
-        <!-- SETTINGS SECTIONS -->
-        <div class="settings-grid">
-
-            <!-- USER PROFILE CARD -->
-            <div class="settings-card">
-                <h2>User Profile</h2>
-                <div class="setting-row">
-                    <label>Name</label>
-                    <input type="text" value="User">
-                </div>
-
-                <div class="setting-row">
-                    <label>Email</label>
-                    <input type="email" value="surabhi@example.com">
-                </div>
-
-                <div class="setting-row">
-                    <label>Role</label>
-                    <input type="text" disabled value="Inventory Manager">
-                </div>
-
-                <button class="btn-primary full">Save Changes</button>
+        <div class="settings-grid" style="display:flex;gap:16px;flex-wrap:wrap;">
+          <!-- USER PROFILE -->
+          <form id="profileForm" class="panel" style="flex:1;min-width:280px;max-width:520px;">
+            <div class="panel-header" style="margin-bottom:8px">
+              <h2 style="margin:0;font-size:16px">User Profile</h2>
             </div>
 
+            <label style="margin-top:8px">Name</label>
+            <input name="name" type="text" value="User" />
 
-            <!-- SYSTEM SETTINGS -->
-            <div class="settings-card">
-                <h2>Inventory Settings</h2>
+            <label style="margin-top:12px">Email</label>
+            <input name="email" type="email" value="surabhi@example.com" />
 
-                <div class="setting-row">
-                    <label>Low Stock Alert Threshold</label>
-                    <input type="number" value="10">
-                </div>
+            <label style="margin-top:12px">Role</label>
+            <input name="role" type="text" value="Inventory Manager" disabled />
 
-                <div class="setting-row">
-                    <label>Default Warehouse</label>
-                    <select>
-                        <option>Main Warehouse</option>
-                        <option>Warehouse A</option>
-                        <option>Warehouse B</option>
-                    </select>
-                </div>
+            <div style="margin-top:14px;">
+              <button type="button" class="btn" id="saveProfile">Save Changes</button>
+            </div>
+          </form>
 
-                <button class="btn-primary full">Update Settings</button>
+          <!-- INVENTORY SETTINGS -->
+          <form id="inventoryForm" class="panel" style="flex:1;min-width:280px;max-width:420px;">
+            <div class="panel-header" style="margin-bottom:8px">
+              <h2 style="margin:0;font-size:16px">Inventory Settings</h2>
             </div>
 
+            <label style="margin-top:8px">Low Stock Alert Threshold</label>
+            <input name="lowThreshold" type="number" value="10" min="0" />
 
-            <!-- SECURITY SETTINGS -->
-            <div class="settings-card">
-                <h2>Security</h2>
+            <label style="margin-top:12px">Default Warehouse</label>
+            <select name="defaultWarehouse">
+              <option>Main Warehouse</option>
+              <option>Warehouse A</option>
+              <option>Warehouse B</option>
+            </select>
 
-                <div class="setting-row">
-                    <label>Current Password</label>
-                    <input type="password">
-                </div>
+            <div style="margin-top:14px;">
+              <button type="button" class="btn" id="updateInventory">Update Settings</button>
+            </div>
+          </form>
 
-                <div class="setting-row">
-                    <label>New Password</label>
-                    <input type="password">
-                </div>
-
-                <div class="setting-row">
-                    <label>Confirm New Password</label>
-                    <input type="password">
-                </div>
-
-                <button class="btn-primary full">Change Password</button>
+          <!-- SECURITY -->
+          <form id="securityForm" class="panel" style="flex:1;min-width:280px;max-width:420px;">
+            <div class="panel-header" style="margin-bottom:8px">
+              <h2 style="margin:0;font-size:16px">Security</h2>
             </div>
 
+            <label style="margin-top:8px">Current Password</label>
+            <div class="password-box"><input name="currentPassword" type="password" /></div>
 
-            <!-- DOWNLOAD / ABOUT -->
-            <div class="settings-card">
-                <h2>About & Export</h2>
+            <label style="margin-top:12px">New Password</label>
+            <div class="password-box"><input name="newPassword" type="password" /></div>
 
-                <button class="btn-secondary full" onclick="location.href='Open StockMaster.pdf'">
-                    Download Documentation
-                </button>
+            <label style="margin-top:12px">Confirm New Password</label>
+            <div class="password-box"><input name="confirmPassword" type="password" /></div>
 
-                <button class="btn-ghost full">Version 1.0.0</button>
+            <div style="margin-top:14px;">
+              <button type="button" class="btn" id="changePassword">Change Password</button>
+            </div>
+          </form>
+
+          <!-- ABOUT / EXPORT -->
+          <section class="panel" style="flex:1;min-width:280px;max-width:320px;">
+            <div class="panel-header" style="margin-bottom:8px">
+              <h2 style="margin:0;font-size:16px">About & Export</h2>
             </div>
 
+            <div style="margin-top:8px;">
+              <button type="button" class="btn btn-secondary full" id="downloadDocs">Download Documentation</button>
+            </div>
+            <div style="margin-top:8px;">
+              <div class="stat-title">Version</div>
+              <div class="stat-value" style="margin-top:6px">1.0.0</div>
+            </div>
+          </section>
         </div>
-
+      </section>
     </main>
+  </div>
 
-</div>
+  <script>
+    // mark active nav
+    (function markActiveMenu() {
+      const path = location.pathname.split('/').pop() || 'settings.html';
+      document.querySelectorAll('.menu a').forEach(a => {
+        const href = a.getAttribute('href') || '';
+        a.classList.toggle('active', href === path || (path === '' && href === 'index.html'));
+      });
+    })();
+
+    // small demo handlers
+    document.getElementById('saveProfile')?.addEventListener('click', () => alert('Profile saved (demo).'));
+    document.getElementById('updateInventory')?.addEventListener('click', () => alert('Inventory settings updated (demo).'));
+    document.getElementById('changePassword')?.addEventListener('click', () => alert('Password changed (demo).'));
+    document.getElementById('downloadDocs')?.addEventListener('click', () => {
+      location.href = '/mnt/data/StockMaster.pdf';
+    });
+    document.getElementById('saveAll')?.addEventListener('click', () => alert('All changes saved (demo).'));
+  </script>
 </body>
 </html>
