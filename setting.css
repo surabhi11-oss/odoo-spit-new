@@ -1,0 +1,67 @@
+.page-title-row {
+    margin: 25px 0;
+}
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.settings-card {
+    background: #0f172a;
+    padding: 25px;
+    border-radius: 14px;
+    border: 1px solid #1e293b;
+}
+
+.settings-card h2 {
+    margin-bottom: 18px;
+    font-size: 20px;
+    color: #e2e8f0;
+}
+
+.setting-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.setting-row label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #94a3b8;
+}
+
+.setting-row input,
+.setting-row select {
+    padding: 10px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: white;
+}
+
+.btn-primary.full,
+.btn-secondary.full,
+.btn-ghost.full {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-secondary {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 10px;
+    color: #cbd5e1;
+    border-radius: 8px;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid #334155;
+    padding: 10px;
+    color: #cbd5e1;
+    border-radius: 8px;
+}

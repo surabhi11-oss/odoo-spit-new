@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings — StockMaster</title>
+
+    <!-- MAIN THEME CSS -->
+    <link rel="stylesheet" href="setting.css">
+
+    <!-- PAGE SPECIFIC -->
+    <link rel="stylesheet" href="settings.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-circle">SM</div>
+            <h2>StockMaster</h2>
+            <p>Inventory Dashboard</p>
+        </div>
+
+        <nav>
+            <a href="index.html">Dashboard</a>
+            <a href="products.html">Products</a>
+            <a href="receipts.html">Receipts</a>
+            <a href="deliveries.html">Deliveries</a>
+            <a href="transfers.html">Transfers</a>
+            <a href="adjustments.html">Adjustments</a>
+            <a href="moveHistory.html">Move History</a>
+            <a class="active" href="settings.html">Settings</a>
+        </nav>
+
+        <div class="user-footer">
+            <div class="user-circle">U</div>
+            <div>
+                <h4>User</h4>
+                <p>Inventory Manager</p>
+            </div>
+        </div>
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <input type="text" class="search" placeholder="Search Settings...">
+            
+            <div class="profile">
+                <div class="profile-icon">U</div>
+                <div>
+                    <h4>User</h4>
+                    <p>Inventory Manager</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- PAGE HEADER -->
+        <div class="page-title-row">
+            <h1>Settings</h1>
+        </div>
+
+
+        <!-- SETTINGS SECTIONS -->
+        <div class="settings-grid">
+
+            <!-- USER PROFILE CARD -->
+            <div class="settings-card">
+                <h2>User Profile</h2>
+                <div class="setting-row">
+                    <label>Name</label>
+                    <input type="text" value="User">
+                </div>
+
+                <div class="setting-row">
+                    <label>Email</label>
+                    <input type="email" value="surabhi@example.com">
+                </div>
+
+                <div class="setting-row">
+                    <label>Role</label>
+                    <input type="text" disabled value="Inventory Manager">
+                </div>
+
+                <button class="btn-primary full">Save Changes</button>
+            </div>
+
+
+            <!-- SYSTEM SETTINGS -->
+            <div class="settings-card">
+                <h2>Inventory Settings</h2>
+
+                <div class="setting-row">
+                    <label>Low Stock Alert Threshold</label>
+                    <input type="number" value="10">
+                </div>
+
+                <div class="setting-row">
+                    <label>Default Warehouse</label>
+                    <select>
+                        <option>Main Warehouse</option>
+                        <option>Warehouse A</option>
+                        <option>Warehouse B</option>
+                    </select>
+                </div>
+
+                <button class="btn-primary full">Update Settings</button>
+            </div>
+
+
+            <!-- SECURITY SETTINGS -->
+            <div class="settings-card">
+                <h2>Security</h2>
+
+                <div class="setting-row">
+                    <label>Current Password</label>
+                    <input type="password">
+                </div>
+
+                <div class="setting-row">
+                    <label>New Password</label>
+                    <input type="password">
+                </div>
+
+                <div class="setting-row">
+                    <label>Confirm New Password</label>
+                    <input type="password">
+                </div>
+
+                <button class="btn-primary full">Change Password</button>
+            </div>
+
+
+            <!-- DOWNLOAD / ABOUT -->
+            <div class="settings-card">
+                <h2>About & Export</h2>
+
+                <button class="btn-secondary full" onclick="location.href='Open StockMaster.pdf'">
+                    Download Documentation
+                </button>
+
+                <button class="btn-ghost full">Version 1.0.0</button>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+</body>
+</html>

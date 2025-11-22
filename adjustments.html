@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adjustments — StockMaster</title>
+
+    <!-- MAIN THEME CSS (important) -->
+    <link rel="stylesheet" href="hero.css">
+
+    <!-- PAGE SPECIFIC CSS -->
+    <link rel="stylesheet" href="adjustments.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo-box">
+            <div class="logo">SM</div>
+            <div>
+                <h2>StockMaster</h2>
+                <small class="subtitle">Inventory Dashboard</small>
+            </div>
+        </div>
+
+        <div class="nav">
+            <a class="nav-item" href="hero.html">Dashboard</a>
+            <a class="nav-item" href="products.html">Products</a>
+            <a class="nav-item" href="receipts.html">Receipts</a>
+            <a class="nav-item" href="deliveries.html">Deliveries</a>
+            <a class="nav-item" href="transfers.html">Transfers</a>
+            <a class="nav-item active" href="adjustments.html">Adjustments</a>
+            <a class="nav-item" href="move-history.html">Move History</a>
+            <a class="nav-item" href="settings.html">Settings</a>
+        </div>
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <input type="text" class="search" placeholder="Search product / adjustment..." aria-label="Search adjustments">
+            <select class="warehouse" aria-label="Select warehouse">
+                <option>All Warehouses</option>
+            </select>
+            <div class="user-box">
+                <div class="user-info">
+                    <b>User</b><br>
+                    <small>Inventory Manager</small>
+                </div>
+                <div class="user-icon">U</div>
+            </div>
+        </div>
+
+        <!-- PAGE TITLE -->
+        <div class="page-title-row">
+            <h1>Inventory Adjustments</h1>
+            <button class="btn-primary" onclick="location.href='adjustment-new.html'">
+                + New Adjustment
+            </button>
+        </div>
+
+        <!-- SUMMARY CARDS -->
+        <div class="kpi-grid">
+            <div class="card">
+                <h3>Pending Adjustments</h3>
+                <p class="value">4</p>
+                <span>Awaiting approval</span>
+            </div>
+
+            <div class="card">
+                <h3>Completed</h3>
+                <p class="value">18</p>
+                <span>Stock synced</span>
+            </div>
+
+            <div class="card">
+                <h3>Negative Adjustments</h3>
+                <p class="value">7</p>
+                <span>Damaged / Missing</span>
+            </div>
+
+            <div class="card">
+                <h3>Positive Adjustments</h3>
+                <p class="value">11</p>
+                <span>Excess / Found</span>
+            </div>
+        </div>
+
+        <!-- FILTER CARD -->
+        <div class="big-card">
+            <h2>Filter Adjustments</h2>
+
+            <div class="filter-row">
+                <select aria-label="Filter by status">
+                    <option>Status — All</option>
+                    <option>Pending</option>
+                    <option>Approved</option>
+                    <option>Rejected</option>
+                </select>
+                <select aria-label="Filter by product">
+                    <option>All Products</option>
+                </select>
+
+                <input type="date" aria-label="Start date">
+                <input type="date" aria-label="End date">
+
+                <input type="text" class="search" placeholder="Search adjustment..." aria-label="Search adjustments">
+                <button class="btn-primary small">Filter</button>
+            </div>
+        </div>
+
+        <!-- RECENT ADJUSTMENTS LIST -->
+        <div class="big-card">
+            <h2>Recent Adjustments</h2>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="dot yellow"></div>
+                    <div>
+                        <p class="t-date">Nov 21, 2025</p>
+                        <p class="t-title">Adjustment #A119 — Pending</p>
+                        <p class="t-sub">Product: Steel Rods — Difference: -3</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot green"></div>
+                    <div>
+                        <p class="t-date">Nov 19, 2025</p>
+                        <p class="t-title">Adjustment #A118 — Approved</p>
+                        <p class="t-sub">Product: Bolts — Difference: +12</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot red"></div>
+                    <div>
+                        <p class="t-date">Nov 16, 2025</p>
+                        <p class="t-title">Adjustment #A117 — Rejected</p>
+                        <p class="t-sub">Product: Copper Sheets — Difference: -5</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- TABLE LIST -->
+        <div class="big-card">
+            <h2>All Adjustments</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Product</th>
+                        <th>Old Qty</th>
+                        <th>New Qty</th>
+                        <th>Difference</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th class="text-right">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>A119</td>
+                        <td>Steel Rods</td>
+                        <td>150</td>
+                        <td>147</td>
+                        <td><span class="pill red">-3</span></td>
+                        <td><span class="pill yellow">Pending</span></td>
+                        <td>Nov 21, 2025</td>
+                        <td class="text-right"><button class="btn-ghost">View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>A118</td>
+                        <td>Bolts</td>
+                        <td>300</td>
+                        <td>312</td>
+                        <td><span class="pill green">+12</span></td>
+                        <td><span class="pill green">Approved</span></td>
+                        <td>Nov 19, 2025</td>
+                        <td class="text-right"><button class="btn-ghost">View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>A117</td>
+                        <td>Copper Sheets</td>
+                        <td>80</td>
+                        <td>75</td>
+                        <td><span class="pill red">-5</span></td>
+                        <td><span class="pill red">Rejected</span></td>
+                        <td>Nov 16, 2025</td>
+                        <td class="text-right"><button class="btn-ghost">View</button></td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+    </main>
+</div>
+</body>
+</html>

@@ -34,16 +34,20 @@ body {
 }
 
 .logo {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #6be3b0, #6ec8ff);
-    border-radius: 6px;
+    width: 42px;
+    height: 42px;
+    background: linear-gradient(135deg, #66e0c2, #7cc9ff);
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    color: #00454f;
+    font-weight: 700;
+    color: #032c2a;
+    font-size: 14px;
 }
+
+.logo-box h2{font-size:16px;margin:0}
+.logo-box .subtitle{font-size:12px;color:#8ea8be}
 
 .subtitle {
     color: #7fa2bf;
@@ -155,6 +159,30 @@ select {
     justify-content: center;
     color: #6f8fb1;
 }
+
+/* Generic table spacing to match product styles */
+.table-wrap table,
+.products-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.table-wrap thead th,
+.products-table thead th {
+    text-align: left;
+    padding: 12px;
+    color: #91b5c9;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.table-wrap tbody td,
+.products-table tbody td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.02);
+    color: #dff2ff;
+}
+.table-wrap tbody tr:nth-child(even),
+.products-table tbody tr:nth-child(even) {background: rgba(255,255,255,0.01)}
+
 
 .btn-box {
     margin-top: 12px;

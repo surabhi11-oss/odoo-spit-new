@@ -1,0 +1,7 @@
+.panel .title-row{display:flex;justify-content:space-between;align-items:center}
+.settings-cards{margin-top:14px;display:flex;gap:12px}
+.settings-cards .card{flex:1}
+
+.settings-cards .card .card-title{font-weight:600;margin-bottom:6px}
+.card .card-value{font-size:1.1rem;color:#d8eaf6}
+.low-stock-header{color:#95b4c3;margin-top:8px;font-size:0.95rem}

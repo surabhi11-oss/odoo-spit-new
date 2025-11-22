@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: areaial;
+    box-sizing: border-box;
+    font-size: 25px;
+}
+
+body {
+    background-color: #f1f1f1;
+    background-image: url('background.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.signup{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SIGN-UP-TEXT{
+    align-item: center;
+}
+
+.signup-card {
+    width: 390px;
+    background-color:#FFF4E6;
+    padding: 35px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.sign-up-text{
+    text-align: center;
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 25px;
+    font-weight: 600;
+    justify-content: center;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    font-size: 14px;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    padding: 11px 12px;
+    margin-top: 5px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.password-box{
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #777;
+    cursor: pointer;
+}
+
+#sign-up-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 18px;
+    background: #023047;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#sign-up-button:hover {
+    background: #219ebc;
+}
+
+.small-text {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+    color: #444;
+}
+
+.small-text a {
+    color: #7a164a;
+    text-decoration: none;
+}
+
+.divider {
+    text-align: center;
+    color: #777;
+    margin: 12px 0;
+}
+
+.passkey-btn {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #ccc;
+    background: #fff;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    color: #444;
+}
+
+.passkey-btn i {
+    margin-right: 6px;
+}
+
+.powered {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}

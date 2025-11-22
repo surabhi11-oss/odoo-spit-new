@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Move History — StockMaster</title>
+
+    <!-- MAIN THEME CSS -->
+    <link rel="stylesheet" href="hero.css">
+
+    <!-- PAGE CSS -->
+    <link rel="stylesheet" href="move-history.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo-box">
+            <div class="logo">SM</div>
+            <div>
+                <h2>StockMaster</h2>
+                <small class="subtitle">Inventory Dashboard</small>
+            </div>
+        </div>
+
+        <div class="nav">
+            <a class="nav-item" href="hero.html">Dashboard</a>
+            <a class="nav-item" href="products.html">Products</a>
+            <a class="nav-item" href="receipts.html">Receipts</a>
+            <a class="nav-item" href="deliveries.html">Deliveries</a>
+            <a class="nav-item" href="transfers.html">Transfers</a>
+            <a class="nav-item" href="adjustments.html">Adjustments</a>
+            <a class="nav-item active" href="move-history.html">Move History</a>
+            <a class="nav-item" href="settings.html">Settings</a>
+        </div>
+    </div>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <div>
+                <input type="text" class="search" placeholder="Search SKU, Doc, From-To" aria-label="Search movements">
+                <select class="warehouse" aria-label="Select warehouse">
+                    <option>All Warehouses</option>
+                </select>
+            </div>
+
+            <div class="user-box">
+                <div class="user-info">
+                    <b>User</b><br>
+                    <small>Inventory Manager</small>
+                </div>
+                <div class="user-icon">U</div>
+            </div>
+        </div>
+
+
+        <!-- PAGE HEADER -->
+        <div class="page-title-row">
+            <h1>Move History</h1>
+        </div>
+
+
+        <!-- FILTERS -->
+        <div class="big-card">
+            <h2>Filter History</h2>
+
+            <div class="filter-row">
+                <select aria-label="Filter by type">
+                    <option>Type — All</option>
+                    <option>Receipt</option>
+                    <option>Delivery</option>
+                    <option>Internal Transfer</option>
+                    <option>Adjustment</option>
+                </select>
+                <select aria-label="Filter by status">
+                    <option>Status — All</option>
+                    <option>Done</option>
+                    <option>Cancelled</option>
+                </select>
+
+                <input type="date" aria-label="Start date">
+                <input type="date" aria-label="End date">
+
+                <input type="text" class="search" placeholder="Search movement..." aria-label="Search movement">
+
+                <button class="btn-primary small">Filter</button>
+            </div>
+        </div>
+
+
+        <!-- TIMELINE: RECENT MOVEMENTS -->
+        <div class="big-card">
+            <h2>Recent Movements</h2>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+                    <div class="dot blue"></div>
+                    <div>
+                        <p class="t-date">Nov 21, 2025</p>
+                        <p class="t-title">Receipt #R1012 — Done</p>
+                        <p class="t-sub">Vendor Supplies → Main Warehouse | 120 units</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot purple"></div>
+                    <div>
+                        <p class="t-date">Nov 20, 2025</p>
+                        <p class="t-title">Internal Transfer #T301 — Completed</p>
+                        <p class="t-sub">Main Warehouse → Production Rack | 50 units</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot green"></div>
+                    <div>
+                        <p class="t-date">Nov 19, 2025</p>
+                        <p class="t-title">Delivery #D1021 — Completed</p>
+                        <p class="t-sub">Main Warehouse → Customer | 12 units</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="dot red"></div>
+                    <div>
+                        <p class="t-date">Nov 16, 2025</p>
+                        <p class="t-title">Adjustment #A117 — Negative</p>
+                        <p class="t-sub">Copper Sheets — Damaged | -5</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- TABLE: ALL MOVEMENTS -->
+        <div class="big-card">
+            <h2>All Movements</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Product</th>
+                        <th>Qty</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th class="text-right">Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>M3240</td>
+                        <td>Receipt</td>
+                        <td>Steel Rods</td>
+                        <td>120</td>
+                        <td>Vendor</td>
+                        <td>Main WH</td>
+                        <td><span class="pill green">Done</span></td>
+                        <td>Nov 21, 2025</td>
+                        <td class="text-right"><button class="btn-ghost">View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>M3239</td>
+                        <td>Transfer</td>
+                        <td>Steel Rods</td>
+                        <td>50</td>
+                        <td>Main WH</td>
+                        <td>Rack B</td>
+                        <td><span class="pill purple">Completed</span></td>
+                        <td>Nov 20, 2025</td>
+                        <td class="text-right"><button class="btn-ghost">View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>M3238</td>
+                        <td>Delivery</td>
+                        <td>Bolt Pack</td>
+                        <td>12</td>
+                        <td>Main WH</td>
+                        <td>Customer</td>
+                        <td><span class="pill blue">Done</span></td>
+                        <td>Nov 19, 2025</td>
+                        <td class="text-right"><button class="btn-ghost">View</button></td>
+                    </tr>
+
+                    <tr>
+                        <td>M3237</td>
+                        <td>Adjustment</td>
+                        <td>Copper Sheet</td>
+                        <td>-5</td>
+                        <td>Inventory</td>
+                        <td>Inventory</td>
+                        <td><span class="pill red">Negative</span></td>
+                        <td>Nov 16, 2025</td>
+                        <td class="text-right"><button class="btn-ghost">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+</div>
+</body>
+</html>

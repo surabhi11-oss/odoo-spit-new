@@ -1,0 +1,77 @@
+.flex-between{display:flex;justify-content:space-between;align-items:center}
+.flex-gap{display:flex;gap:8px}
+.mt-16{margin-top:16px}
+.mt-18{margin-top:18px}
+.flex-wrap-gap{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.table-wrapper{padding:0;border:none}
+.deliveries-table{width:100%;color:inherit;border-collapse:collapse}
+.deliveries-table thead th{padding:10px 8px;text-align:left}
+.deliveries-table tbody td{padding:10px 8px}
+.text-right{text-align:right}
+
+/* Small responsive tweaks for deliveries table */
+@media (max-width:800px){
+  .deliveries-table{font-size:14px}
+}
+.page-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px 0;
+}
+
+.btn-primary {
+    background: #3b82f6;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.btn-primary.small {
+    padding: 8px 12px;
+}
+
+.filter-row {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-top: 5px;
+}
+
+.dot.blue { background: #3b82f6; }
+.dot.green { background: #22c55e; }
+.dot.red { background: #ef4444; }
+
+.pill {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #fff;
+}
+
+.pill.blue { background: #3b82f6; }
+.pill.green { background: #22c55e; }
+.pill.red { background: #ef4444; }
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid #1f2a3a;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: #e2e8f0;
+}
